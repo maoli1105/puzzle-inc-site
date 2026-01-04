@@ -162,7 +162,7 @@ const ProductLineup: React.FC = () => {
           <div className="flex justify-center mt-20 md:mt-32">
             <MagneticButton>
               <a
-                href="/products/"
+                href="products/"
                 className="group relative inline-flex flex-col items-center justify-center px-16 py-6 overflow-hidden rounded-full bg-gray-900 text-white transition-all duration-300 hover:bg-gray-800 shadow-xl hover:shadow-2xl clickable min-w-[240px]"
               >
                 <span className="text-xl font-bold tracking-[0.2em] uppercase mb-1">Products</span>

@@ -17,7 +17,7 @@ const MOCK_DATA: PieceProduct[] = [
     Piece_Description: "240Wの高速充電。480Mbpsのデータ転送。磁力でぴたっとまとまり、いつもすっきり。あなたのデジタルライフを静かに支える、究極のケーブル体験。",
     // カンマ区切りで複数の画像を指定すると、自動的にスライドショーになります
     Piece_Image_URL: "assets/piece_one_01.png,assets/piece_one_02.png,assets/piece_one_03.png,assets/piece_one_04.png,assets/piece_one_05.png",
-    Piece_Detail_URL: "/products/piece-one/"
+    Piece_Detail_URL: "products/piece-one/"
   },
   {
     id: "2",
@@ -25,7 +25,7 @@ const MOCK_DATA: PieceProduct[] = [
     Piece_Catchphrase: "流れを止めない、美しさ。",
     Piece_Description: "強靭さと、しなやかさを。高耐久ナイロン編組と金属コネクタの輝きが、確かな接続と上質な手触りを約束します。日常のノイズを忘れさせる、スムーズなデータフロー。",
     Piece_Image_URL: "assets/piece_flow_01.png,assets/piece_flow_02.png,assets/piece_flow_03.png",
-    Piece_Detail_URL: "/products/piece-flow/"
+    Piece_Detail_URL: "products/piece-flow/"
   }
 ];
 

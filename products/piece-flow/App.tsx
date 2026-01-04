@@ -52,7 +52,7 @@ const App: React.FC = () => {
     <div className="antialiased font-sans bg-black text-gray-900 min-h-screen">
       <Opening onComplete={() => setLoading(false)} />
       <MouseStalker />
-      
+
       {/* Global Background (Full Screen) */}
       <GlobalBackground activeSection={activeSection} />
 
@@ -61,44 +61,46 @@ const App: React.FC = () => {
       <FloatingPieces />
 
       <div className={`transition-opacity duration-1000 relative z-10 ${loading ? 'opacity-0' : 'opacity-100'}`}>
-        
+
         {/* Main 3-Column Grid Layout */}
         <div className="lg:grid lg:grid-cols-4 min-h-screen">
-            
-            {/* Left Column (Fixed) 25% - Transparent to show GlobalBackground */}
-            <div className="lg:col-span-1">
-                <LeftSide activeSection={activeSection} />
+
+          {/* Left Column (Fixed) 25% - Transparent to show GlobalBackground */}
+          <div className="lg:col-span-1">
+            <LeftSide activeSection={activeSection} />
+          </div>
+
+          {/* Center Column (Scrolls) 50% - Semi-transparent white background */}
+          <main className="lg:col-span-2 w-full relative z-10 bg-white/90 backdrop-blur-sm shadow-2xl min-h-screen">
+            {/* Mobile Header */}
+            <header className="lg:hidden p-6 absolute top-0 left-0 z-30 w-full flex justify-between items-center">
+              <a href="../../" className="block">
+                <img src="assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
+              </a>
+            </header>
+
+            <div className="pb-24 lg:pb-0">
+              <PieceHero />
+              <PieceConcept />
+              <PieceFeatures />
+              <PieceStructure />
+              <PieceTexture />
+              <PieceGallery />
+              <PieceColors />
+              <PieceUtility />
+              <PieceMatch />
+              <PieceGift />
+              <PieceReviews />
+              <PieceSpec />
+              <Dialogue />
             </div>
+          </main>
 
-            {/* Center Column (Scrolls) 50% - Semi-transparent white background */}
-            <main className="lg:col-span-2 w-full relative z-10 bg-white/90 backdrop-blur-sm shadow-2xl min-h-screen">
-                {/* Mobile Header */}
-                <header className="lg:hidden p-6 absolute top-0 left-0 z-30 w-full flex justify-between items-center">
-                    <img src="assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
-                </header>
+          {/* Right Column (Fixed) 25% - Transparent to show GlobalBackground */}
+          <div className="lg:col-span-1">
+            <Sidebar activeSection={activeSection} />
+          </div>
 
-                <div className="pb-24 lg:pb-0">
-                    <PieceHero />
-                    <PieceConcept />
-                    <PieceFeatures />
-                    <PieceStructure />
-                    <PieceTexture />
-                    <PieceGallery />
-                    <PieceColors />
-                    <PieceUtility />
-                    <PieceMatch />
-                    <PieceGift />
-                    <PieceReviews />
-                    <PieceSpec />
-                    <Dialogue />
-                </div>
-            </main>
-
-            {/* Right Column (Fixed) 25% - Transparent to show GlobalBackground */}
-            <div className="lg:col-span-1">
-                <Sidebar activeSection={activeSection} />
-            </div>
-            
         </div>
 
         {/* Mobile Fixed CTA */}
