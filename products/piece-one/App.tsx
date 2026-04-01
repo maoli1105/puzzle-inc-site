@@ -73,7 +73,7 @@ const App: React.FC = () => {
             {/* Mobile Header */}
             <header className="lg:hidden p-6 absolute top-0 left-0 z-30 w-full flex justify-between items-center">
               <a href="../../" className="block">
-                <img src="/assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
+                <img src="../../assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
               </a>
             </header>
 

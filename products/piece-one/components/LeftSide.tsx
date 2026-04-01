@@ -16,7 +16,7 @@ const LeftSide: React.FC<LeftSideProps> = ({ activeSection }) => {
           className="block w-24 opacity-90 hover:opacity-100 transition-opacity drop-shadow-md"
           aria-label="Back to Home"
         >
-          <img src="/assets/logo.png" alt="Puzzle" className="w-full h-auto filter brightness-0 invert" />
+          <img src="../../assets/logo.png" alt="Puzzle" className="w-full h-auto filter brightness-0 invert" />
         </a>
       </div>
 

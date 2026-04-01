@@ -21,7 +21,7 @@ const PieceFeatures: React.FC = () => {
                     <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="/assets/piceone_x1.jpg" 
+                                src="../../assets/piceone_x1.jpg" 
                                 alt="Braided Cable"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
@@ -45,7 +45,7 @@ const PieceFeatures: React.FC = () => {
                     <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="/assets/piceone_x2.jpg" 
+                                src="../../assets/piceone_x2.jpg" 
                                 alt="Magnet"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
@@ -69,7 +69,7 @@ const PieceFeatures: React.FC = () => {
                     <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="/assets/piceone_x3.jpg" 
+                                src="../../assets/piceone_x3.jpg" 
                                 alt="Zinc Alloy"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />

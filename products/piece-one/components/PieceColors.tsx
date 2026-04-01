@@ -4,9 +4,9 @@ import ScrollReveal from './ScrollReveal';
 import ShutterReveal from './ShutterReveal';
 
 const colors = [
-  { id: 'black', name: 'Black', label: 'ブラック', hex: '#222222', img: '/assets/piceone_01_bk.jpg' },
-  { id: 'mint-blue', name: 'Mint Blue', label: 'ミントブルー', hex: '#BAE6FD', img: '/assets/piceone_01_mb.jpg' },
-  { id: 'pink', name: 'Shell Pink', label: 'ピンク', hex: '#FBCFE8', img: '/assets/piceone_01_pk.jpg' },
+  { id: 'black', name: 'Black', label: 'ブラック', hex: '#222222', img: '../../assets/piceone_01_bk.jpg' },
+  { id: 'mint-blue', name: 'Mint Blue', label: 'ミントブルー', hex: '#BAE6FD', img: '../../assets/piceone_01_mb.jpg' },
+  { id: 'pink', name: 'Shell Pink', label: 'ピンク', hex: '#FBCFE8', img: '../../assets/piceone_01_pk.jpg' },
 ];
 
 const PieceColors: React.FC = () => {
@@ -22,7 +22,7 @@ const PieceColors: React.FC = () => {
 
         <div className="flex flex-col items-center">
             {/* Main Visual */}
-            <div className="relative w-64 h-64 mb-10 flex items-center justify-center">
+            <div className="relative w-96 h-96 md:w-[500px] md:h-[500px] mb-10 flex items-center justify-center">
                 <div 
                     className="absolute inset-0 rounded-full filter blur-[60px] opacity-30 transition-colors duration-700"
                     style={{ backgroundColor: active.hex }}
