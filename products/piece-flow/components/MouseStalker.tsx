@@ -62,7 +62,7 @@ const MouseStalker: React.FC = () => {
   return (
     <div
       ref={stalkerRef}
-      className={`fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-white mix-blend-difference transition-all duration-300 ease-out will-change-transform flex items-center justify-center`}
+      className={`hidden lg:flex fixed top-0 left-0 pointer-events-none z-[9999] rounded-full bg-white mix-blend-difference transition-all duration-300 ease-out will-change-transform flex items-center justify-center`}
       style={{
         width: isHovering ? '80px' : '12px',
         height: isHovering ? '80px' : '12px',

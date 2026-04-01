@@ -4,9 +4,9 @@ import ScrollReveal from './ScrollReveal';
 import ShutterReveal from './ShutterReveal';
 
 const colors = [
-  { id: 'black', name: 'Black', label: 'ブラック', hex: '#222222', img: 'assets/piece_flow_01.png' },
-  { id: 'mint', name: 'Mint Green', label: 'ミントグリーン', hex: '#A7F3D0', img: 'assets/piece_flow_02.png' },
-  { id: 'pink', name: 'Shell Pink', label: 'ピンク', hex: '#FBCFE8', img: 'assets/piece_flow_03.png' },
+  { id: 'black', name: 'Black', label: 'ブラック', hex: '#222222', img: '/assets/piceone_01_bk.jpg' },
+  { id: 'mint-blue', name: 'Mint Blue', label: 'ミントブルー', hex: '#BAE6FD', img: '/assets/piceone_01_mb.jpg' },
+  { id: 'pink', name: 'Shell Pink', label: 'ピンク', hex: '#FBCFE8', img: '/assets/piceone_01_pk.jpg' },
 ];
 
 const PieceColors: React.FC = () => {

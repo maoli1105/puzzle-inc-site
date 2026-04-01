@@ -68,7 +68,7 @@ const News: React.FC = () => {
                     <TextReveal>Latest News</TextReveal>
                 </h3>
             </div>
-            <a href="#" className="hidden md:inline-block text-sm font-bold tracking-widest uppercase hover:text-blue-600 transition-colors">
+            <a href="#" className="hidden md:inline-block text-sm font-bold tracking-widest uppercase hover:text-gray-900 transition-colors">
                 View All Archives &rarr;
             </a>
         </ScrollReveal>
@@ -83,7 +83,7 @@ const News: React.FC = () => {
                     >
                         <div className="md:w-1/4 mb-2 md:mb-0">
                             <span className="text-sm font-mono text-gray-400 block mb-1">{item.date}</span>
-                            <span className="text-xs font-bold tracking-wider uppercase text-blue-600 border border-blue-100 px-2 py-1 rounded inline-block bg-blue-50">
+                            <span className="text-xs font-bold tracking-wider uppercase text-gray-900 border border-blue-100 px-2 py-1 rounded inline-block bg-blue-50">
                                 {item.category}
                             </span>
                         </div>
@@ -98,7 +98,7 @@ const News: React.FC = () => {
         </div>
         
         <div className="mt-12 md:hidden text-center">
-             <a href="#" className="text-sm font-bold tracking-widest uppercase hover:text-blue-600 transition-colors">
+             <a href="#" className="text-sm font-bold tracking-widest uppercase hover:text-gray-900 transition-colors">
                 View All Archives &rarr;
             </a>
         </div>

@@ -5,7 +5,6 @@ import Sidebar from './components/Sidebar';
 import MobileCTA from './components/MobileCTA';
 import MouseStalker from './components/MouseStalker';
 import Opening from './components/Opening';
-import FloatingPieces from './components/FloatingPieces';
 import GlobalBackground from './components/GlobalBackground';
 
 import PieceHero from './components/PieceHero';
@@ -57,7 +56,7 @@ const App: React.FC = () => {
 
       {/* Background Elements */}
       <div className="noise-overlay" />
-      <FloatingPieces />
+      {/* FloatingPieces removed for performance */}
 
       <div className={`transition-opacity duration-1000 relative z-10 ${loading ? 'opacity-0' : 'opacity-100'}`}>
 
@@ -74,7 +73,7 @@ const App: React.FC = () => {
             {/* Mobile Header */}
             <header className="lg:hidden p-6 absolute top-0 left-0 z-30 w-full flex justify-between items-center">
               <a href="../../" className="block">
-                <img src="assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
+                <img src="/assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
               </a>
             </header>
 

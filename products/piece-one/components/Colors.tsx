@@ -67,13 +67,13 @@ const Colors: React.FC = () => {
       </div>
 
       {/* 03: Color (Play) */}
-      <div className="sticky top-0 h-screen w-full bg-blue-600 text-white flex flex-col items-center justify-center overflow-hidden z-30">
+      <div className="sticky top-0 h-screen w-full bg-gray-900 text-white flex flex-col items-center justify-center overflow-hidden z-30">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[50vh] font-black text-white opacity-10 select-none mix-blend-overlay">03</span>
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
-            <span className="text-xs font-bold tracking-[0.3em] text-blue-200 uppercase block mb-6">Play</span>
+            <span className="text-xs font-bold tracking-[0.3em] text-gray-100 uppercase block mb-6">Play</span>
             <h3 className="text-6xl md:text-9xl font-black text-white mb-8 tracking-tighter">
                 <TextReveal stagger={0.1}>Color</TextReveal>
             </h3>
@@ -86,7 +86,7 @@ const Colors: React.FC = () => {
             
             <div className="flex justify-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-yellow-400 shadow-lg animate-bounce" style={{ animationDelay: '0s' }}></div>
-                <div className="w-16 h-16 rounded-full bg-pink-500 shadow-lg animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-16 h-16 rounded-full bg-gray-900 shadow-lg animate-bounce" style={{ animationDelay: '0.1s' }}></div>
                 <div className="w-16 h-16 rounded-full bg-cyan-400 shadow-lg animate-bounce" style={{ animationDelay: '0.2s' }}></div>
             </div>
         </div>

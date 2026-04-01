@@ -45,7 +45,7 @@ const PieceStructure: React.FC = () => {
                     <div className="absolute transition-transform duration-700 group-hover:translate-x-[40px] z-20">
                         <div className="w-64 h-16 rounded-full flex items-center justify-center shadow-lg border border-white"
                              style={{ background: 'linear-gradient(90deg, #F9A8D4, #FBCFE8)' }}>
-                             <span className="text-xs font-mono text-pink-600">Liquid Silicon</span>
+                             <span className="text-xs font-mono text-gray-600">Liquid Silicon</span>
                         </div>
                     </div>
 

@@ -24,7 +24,7 @@ const PieceHero: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white rounded-full opacity-50 filter blur-xl animate-pulse"></div>
             <ShutterReveal className="w-full h-full" delay={200}>
                 <img 
-                    src="assets/piece_one_01.png" 
+                    src="/assets/piceone_01_bk.jpg" 
                     alt="Piece One"
                     className="relative w-full h-full object-contain drop-shadow-2xl animate-float"
                 />

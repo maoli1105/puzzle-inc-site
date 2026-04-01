@@ -38,12 +38,12 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
               key={item.id}
               onClick={() => scrollTo(item.id)}
               className={`text-xs tracking-[0.2em] uppercase transition-all duration-300 group flex items-center justify-end ${
-                activeSection === item.id ? 'text-pink-500 font-bold' : 'text-gray-500 hover:text-pink-400'
+                activeSection === item.id ? 'text-gray-900 font-bold' : 'text-gray-500 hover:text-gray-800'
               }`}
             >
               {item.label}
               <span className={`w-1.5 h-1.5 rounded-full ml-3 transition-all duration-300 shadow-sm ${
-                activeSection === item.id ? 'bg-pink-500 scale-100' : 'bg-gray-300 scale-50 group-hover:scale-75'
+                activeSection === item.id ? 'bg-gray-900 scale-100' : 'bg-gray-300 scale-50 group-hover:scale-75'
               }`} />
             </button>
           ))}
@@ -53,14 +53,13 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
       {/* Bottom: CTA & Info */}
       <div className="relative z-10 drop-shadow-sm">
         <div className="mb-6 text-right">
-            <p className="text-xs text-gray-500 font-medium tracking-wide">Free Shipping on Orders over ¥5,000</p>
-            <p className="text-xl font-bold mt-1 tracking-tight text-gray-900">¥1,680</p>
+            <p className="text-xl font-bold mt-1 tracking-tight text-gray-900">¥1,980</p>
         </div>
         
         {/* Add to Cart Button */}
         <div className="w-full flex justify-end">
              <button 
-                className={`w-full bg-gray-900 text-white font-bold tracking-[0.2em] uppercase text-xs py-4 px-8 rounded-full shadow-lg hover:shadow-xl hover:bg-pink-400 transition-all duration-300 transform hover:-translate-y-1 ${activeSection === 'spec' ? 'animate-pulse ring-4 ring-pink-200' : ''}`}
+                className={`w-full bg-gray-900 text-white font-bold tracking-[0.2em] uppercase text-xs py-4 px-8 rounded-full shadow-lg hover:shadow-xl hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1 ${activeSection === 'spec' ? 'animate-pulse ring-4 ring-gray-200' : ''}`}
              >
                 Add to Cart
              </button>

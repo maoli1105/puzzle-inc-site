@@ -115,7 +115,7 @@ const ProductShowcase: React.FC = () => {
                 </div>
 
                 <ScrollReveal>
-                    <span className="text-xs font-bold tracking-[0.2em] text-blue-600 uppercase block mb-6">
+                    <span className="text-xs font-bold tracking-[0.2em] text-gray-900 uppercase block mb-6">
                         Feature 0{index + 1}
                     </span>
                     <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">

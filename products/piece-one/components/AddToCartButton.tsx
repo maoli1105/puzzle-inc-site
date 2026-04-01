@@ -37,7 +37,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
     : "bg-black text-white hover:bg-gray-800";
     
   // Success State Styles
-  const successClasses = "bg-blue-600 text-white border-blue-600";
+  const successClasses = "bg-gray-900 text-white border-gray-900";
 
   // Width/Shape transition
   const shapeClass = status === 'idle' ? "w-full rounded-sm py-4 px-8" : "w-14 h-14 rounded-full p-0 flex items-center justify-center";

@@ -15,34 +15,33 @@ const PieceSpec: React.FC = () => {
             <div className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 text-sm text-gray-600 max-w-2xl mx-auto">
                 <div className="grid grid-cols-3 py-5 border-b border-gray-100">
                     <dt className="text-gray-400 font-bold">製品名</dt>
-                    <dd className="col-span-2 font-bold text-gray-900">Piece Flow</dd>
+                    <dd className="col-span-2 font-bold text-gray-900">Piece One</dd>
                 </div>
                 <div className="grid grid-cols-3 py-5 border-b border-gray-100">
                     <dt className="text-gray-400 font-bold">タイプ</dt>
-                    <dd className="col-span-2 font-medium">Type-C to Type-C シリコン バイカラーケーブル</dd>
+                    <dd className="col-span-2 font-medium">Type-C to Type-C マグネットケーブル</dd>
                 </div>
                 <div className="grid grid-cols-3 py-5 border-b border-gray-100">
                     <dt className="text-gray-400 font-bold">長さ</dt>
-                    <dd className="col-span-2 font-medium">50cm / 1.0m / 2.0m</dd>
+                    <dd className="col-span-2 font-medium">1.2m</dd>
                 </div>
                 <div className="grid grid-cols-3 py-5 border-b border-gray-100">
                     <dt className="text-gray-400 font-bold">カラー</dt>
                     <dd className="col-span-2 font-medium leading-relaxed">
-                        ブルー×ピンク / ホワイト×ピンク / ホワイト×イエロー / <br/>
-                        ブラック×イエロー / ブラック×ブラック
+                        ブラック / ミントブルー / ピンク
                     </dd>
                 </div>
                 <div className="grid grid-cols-3 py-5 border-b border-gray-100">
                     <dt className="text-gray-400 font-bold">素材</dt>
-                    <dd className="col-span-2 font-medium">リキッドシリコン、亜鉛合金</dd>
+                    <dd className="col-span-2 font-medium">ナイロン、亜鉛合金</dd>
                 </div>
                 <div className="grid grid-cols-3 py-5 border-b border-gray-100">
                     <dt className="text-gray-400 font-bold">出力</dt>
-                    <dd className="col-span-2 font-medium">最大240W / 480Mbpsデータ転送</dd>
+                    <dd className="col-span-2 font-medium">高出力PD対応 / 480Mbpsデータ転送</dd>
                 </div>
                 <div className="grid grid-cols-3 py-5">
                     <dt className="text-gray-400 font-bold">価格</dt>
-                    <dd className="col-span-2 font-bold text-lg text-gray-900">¥1,680 <span className="text-xs font-normal text-gray-500">(税込)</span></dd>
+                    <dd className="col-span-2 font-bold text-lg text-gray-900">¥1,980 <span className="text-xs font-normal text-gray-500">(税込)</span></dd>
                 </div>
             </div>
         </ScrollReveal>

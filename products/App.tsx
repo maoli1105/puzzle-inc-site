@@ -7,7 +7,6 @@ import ProductIndex from './components/ProductIndex';
 import Footer from './components/Footer';
 import Opening from './components/Opening';
 import MouseStalker from './components/MouseStalker';
-import FloatingPieces from './components/FloatingPieces';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -37,7 +36,6 @@ const App: React.FC = () => {
       
       <MouseStalker />
       <div className="noise-overlay" />
-      <FloatingPieces />
       
       <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
         

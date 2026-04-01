@@ -5,7 +5,6 @@ import Sidebar from './components/Sidebar';
 import MobileCTA from './components/MobileCTA';
 import MouseStalker from './components/MouseStalker';
 import Opening from './components/Opening';
-import FloatingPieces from './components/FloatingPieces';
 import GlobalBackground from './components/GlobalBackground';
 
 import PieceHero from './components/PieceHero';
@@ -58,7 +57,6 @@ const App: React.FC = () => {
 
       {/* Background Elements */}
       <div className="noise-overlay" />
-      <FloatingPieces />
 
       <div className={`transition-opacity duration-1000 relative z-10 ${loading ? 'opacity-0' : 'opacity-100'}`}>
 

@@ -11,7 +11,6 @@ import Company from './components/Company';
 import Footer from './components/Footer';
 import Opening from './components/Opening';
 import MouseStalker from './components/MouseStalker';
-import FloatingPieces from './components/FloatingPieces';
 import News from './components/News';
 import LifestyleScroll from './components/LifestyleScroll';
 
@@ -51,7 +50,6 @@ const App: React.FC = () => {
       <div className="noise-overlay" />
       
       {/* Floating Atmosphere (Background) */}
-      <FloatingPieces />
       
       <div className={`transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
         

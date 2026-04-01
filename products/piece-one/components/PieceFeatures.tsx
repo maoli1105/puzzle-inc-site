@@ -17,11 +17,11 @@ const PieceFeatures: React.FC = () => {
             
             {/* Point 1 */}
             <div className="group">
-                <div className="w-full aspect-video mb-6 relative">
+                <div className="w-full aspect-square mb-4 relative">
                     <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=800&auto=format&fit=crop" 
+                                src="/assets/piceone_x1.jpg" 
                                 alt="Braided Cable"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
@@ -41,11 +41,11 @@ const PieceFeatures: React.FC = () => {
 
             {/* Point 2 */}
             <div className="group">
-                <div className="w-full aspect-video mb-6 relative">
+                <div className="w-full aspect-square mb-4 relative">
                     <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1616440347437-b1c73416ef12?q=80&w=800&auto=format&fit=crop" 
+                                src="/assets/piceone_x2.jpg" 
                                 alt="Magnet"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
@@ -65,11 +65,11 @@ const PieceFeatures: React.FC = () => {
 
             {/* Point 3 */}
             <div className="group">
-                <div className="w-full aspect-video mb-6 relative">
+                <div className="w-full aspect-square mb-4 relative">
                     <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=800&auto=format&fit=crop" 
+                                src="/assets/piceone_x3.jpg" 
                                 alt="Zinc Alloy"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />

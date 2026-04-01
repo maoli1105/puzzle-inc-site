@@ -125,7 +125,7 @@ const ProductIndex: React.FC = () => {
                                         
                                         <div className="px-2">
                                             <div className="flex justify-between items-baseline mb-3">
-                                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-gray-900 transition-colors">
                                                     {product.Piece_Name}
                                                 </h3>
                                             </div>
@@ -133,7 +133,7 @@ const ProductIndex: React.FC = () => {
                                             <p className="text-gray-500 text-sm md:text-base leading-loose font-light line-clamp-3 mb-6">
                                                 {product.Piece_Description}
                                             </p>
-                                            <div className="inline-flex items-center text-xs font-bold tracking-[0.1em] uppercase text-blue-600 hover:text-blue-800 transition-colors">
+                                            <div className="inline-flex items-center text-xs font-bold tracking-[0.1em] uppercase text-gray-900 hover:text-gray-700 transition-colors">
                                                 Learn More
                                                 <svg className="w-3 h-3 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                                             </div>

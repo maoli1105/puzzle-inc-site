@@ -120,7 +120,7 @@ const ProductLineup: React.FC = () => {
                   </p>
                   <a 
                     href={product.Piece_Detail_URL}
-                    className="inline-flex items-center text-sm tracking-widest uppercase font-bold text-blue-600 hover:text-blue-800 transition-colors group clickable"
+                    className="inline-flex items-center text-sm tracking-widest uppercase font-bold text-gray-900 hover:text-gray-700 transition-colors group clickable"
                   >
                     このピースのこと、もうちょっと知る？
                     <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>

@@ -24,12 +24,12 @@ const Features: React.FC = () => {
            <div className="md:col-span-2 relative group h-80 md:h-auto">
               <TiltCard className="w-full h-full bg-white rounded-3xl shadow-xl overflow-hidden p-8 md:p-12 flex flex-col justify-between border border-gray-100">
                  <div className="relative z-10">
-                    <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2 block">Power Delivery</span>
+                    <span className="text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 block">Power Delivery</span>
                     <h4 className="text-5xl md:text-7xl font-black text-gray-900 mb-2 tracking-tighter">240W</h4>
                     <p className="text-gray-500 font-medium text-lg">Ultra High Speed Charging</p>
                  </div>
                  <div className="mt-8 relative w-full h-16 bg-gray-100 rounded-full overflow-hidden flex items-center px-2">
-                    <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-400 to-blue-600 w-[0%] animate-charge-bar rounded-full opacity-90"></div>
+                    <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-400 to-gray-900 w-[0%] animate-charge-bar rounded-full opacity-90"></div>
                     <div className="relative z-10 flex justify-between w-full px-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
                         <span>0%</span>
                         <span>100%</span>
