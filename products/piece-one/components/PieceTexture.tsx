@@ -25,7 +25,7 @@ const PieceTexture: React.FC = () => {
                 <ScrollReveal className="w-full aspect-square md:aspect-[16/9] rounded-sm overflow-hidden mb-6 relative group">
                      <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.8)]"></div>
                      <ParallaxImage 
-                        src="https://images.unsplash.com/photo-1543854589-49870b28448f?q=80&w=1600&auto=format&fit=crop" 
+                        src="../../assets/piceone_x1.jpg" 
                         alt="Macro Braid"
                         className="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-700"
                         speed={0.05}
@@ -49,7 +49,7 @@ const PieceTexture: React.FC = () => {
                 <ScrollReveal className="w-full aspect-square md:aspect-[16/9] rounded-sm overflow-hidden mb-6 relative group">
                      <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.8)]"></div>
                      <ParallaxImage 
-                        src="https://images.unsplash.com/photo-1605648916361-9bc12ad6a569?q=80&w=1600&auto=format&fit=crop" 
+                        src="../../assets/piceone_x3.jpg" 
                         alt="Macro Metal"
                         className="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-700"
                         speed={0.05}

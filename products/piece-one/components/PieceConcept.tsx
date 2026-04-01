@@ -9,33 +9,36 @@ const PieceConcept: React.FC = () => {
         
         <ScrollReveal className="text-center mb-16">
             <h2 className="text-2xl md:text-3xl font-bold tracking-widest text-gray-800 leading-relaxed">
-                色と手ざわりで、<br/>
-                あなたらしさを映し出す。
+                整理、という快感。<br/>
+                美しきMag.Linkシステム。
             </h2>
         </ScrollReveal>
 
         <div className="space-y-12 max-w-lg mx-auto text-center">
             <ScrollReveal delay={100}>
                 <p className="text-sm md:text-base leading-loose text-gray-600 font-medium">
-                    ブルー×ピンク、ブラック×イエロー。<br/>
-                    Piece Flowは、単なるケーブルではありません。<br/>
-                    それは、あなたの気分を変える小さなアクセント。
+                    ケーブル同士が意志を持つかのように引き寄せ合い、<br/>
+                    単体でも、複数でも、完璧な秩序を保ちます。<br/>
+                    Piece Oneは、単なるケーブルではありません。<br/>
+                    それは、混迷を極めたデスクの上を鮮やかに整える、<br/>
+                    美しき最後の一片（ピース）。
                 </p>
             </ScrollReveal>
             
             <ScrollReveal delay={200}>
                 <p className="text-sm md:text-base leading-loose text-gray-600 font-medium">
-                    赤ちゃんの肌のような、やわらかなシリコン素材。<br/>
-                    触れるたびに感じる、心地よい優しさ。<br/>
-                    そして、しっかり支える亜鉛合金の強さ。
+                    ブラック、ミントブルー、ピンク。<br/>
+                    しなやかで力強い高密度ナイロンと、<br/>
+                    亜鉛合金がもたらす静かな重厚。<br/>
+                    指先に伝わるその確かな質感は、上質な道具の証です。
                 </p>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
                 <p className="text-sm md:text-base leading-loose text-gray-600 font-medium">
-                    240Wのパワーで、思いを届ける。<br/>
-                    日常のノイズを忘れさせる、<br/>
-                    スムーズなフロー体験をあなたに。
+                    急速充電で、スマートに満たされる。<br/>
+                    絡まりというストレスから解き放たれた、<br/>
+                    完璧なまでの「整う体験」をあなたに。
                 </p>
             </ScrollReveal>
         </div>
