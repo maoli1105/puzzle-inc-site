@@ -45,9 +45,9 @@ const AccordionItem: React.FC<{ item: QAItem; isOpen: boolean; onClick: () => vo
         </span>
       </button>
       <div 
-        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-48 opacity-100 mb-8' : 'max-h-0 opacity-0'}`}
+        className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100 mb-8' : 'max-h-0 opacity-0'}`}
       >
-        <p className="text-gray-500 leading-loose font-light pr-12">
+        <p className="text-gray-500 leading-loose font-light pr-6 md:pr-12">
           {item.answer}
         </p>
       </div>
