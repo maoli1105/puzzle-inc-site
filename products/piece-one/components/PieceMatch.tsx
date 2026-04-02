@@ -14,76 +14,77 @@ const PieceMatch: React.FC = () => {
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
                 <TextReveal>The Perfect Match</TextReveal>
             </h2>
-            <p className="text-gray-500 font-medium">愛機との調和。</p>
+            <p className="text-gray-500 font-medium">あらゆるデバイスに、最高の相棒を。</p>
         </ScrollReveal>
 
         <div className="space-y-32">
             
-            {/* Scene 1: MacBook Pro */}
+            {/* Scene 1: Computing */}
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
                 <div className="w-full md:w-1/2">
                     <TiltCard className="w-full aspect-[4/3] rounded-sm overflow-hidden shadow-xl">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1200&auto=format&fit=crop" 
-                                alt="MacBook Pro Setup"
+                                src="/assets/match_computing.png" 
+                                alt="Professional Workstation"
                                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
                         </ShutterReveal>
                     </TiltCard>
                 </div>
                 <ScrollReveal delay={100} className="w-full md:w-1/2 md:text-left">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900">for MacBook</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">for Your Main Device</h3>
                     <p className="text-gray-500 leading-loose text-sm font-light">
-                        スペースグレイのアルミニウムボディに、マットブラックのPiece Oneが静かに寄り添う。
-                        240Wの高出力は、MacBook Pro 16インチの急速充電にも完全対応。
-                        クリエイティブな作業を止めることなく、エネルギーを供給し続けます。
+                        OSを問わず、プロフェッショナルの要求に応える。
+                        MacBook Proから最新のWindowsワークステーションまで、240Wの超高速給電がクリエイティビティを加速させます。
+                        デスクに潜む「充電不足」というノイズを、Piece Oneが取り除きます。
                     </p>
                 </ScrollReveal>
             </div>
 
-            {/* Scene 2: iPad Pro */}
+            {/* Scene 2: Smartphone */}
             <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-20">
                 <div className="w-full md:w-1/2">
                     <TiltCard className="w-full aspect-[4/3] rounded-sm overflow-hidden shadow-xl">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=1200&auto=format&fit=crop" 
-                                alt="iPad Pro Setup"
+                                src="/assets/match_smartphone.png" 
+                                alt="Universal Smartphone Standard"
                                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
                         </ShutterReveal>
                     </TiltCard>
                 </div>
                 <ScrollReveal delay={100} className="w-full md:w-1/2 md:text-right">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900">for iPad</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">The New Standard</h3>
                     <p className="text-gray-500 leading-loose text-sm font-light ml-auto max-w-lg">
-                        ミニマルなデスクセットアップに、ミントグリーンのアクセントを。
-                        iPad AirやiPad miniとの組み合わせは、機能性だけでなく、
-                        ワークスペースに遊び心と軽やかさをプラスします。
+                        USB-Cが接続の基準となった今、もはやデバイス選びに縛りはありません。
+                        iPhone 15シリーズから最新のAndroidスマートフォンまで。
+                        安定したデータ転送と急速充電を、これ一本で。あなたの手元に、統一された美しさを。
                     </p>
                 </ScrollReveal>
             </div>
 
-            {/* Scene 3: iPhone 15 */}
+            {/* Scene 3: Daily Tools */}
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
                  <div className="w-full md:w-1/2">
                     <TiltCard className="w-full aspect-[4/3] rounded-sm overflow-hidden shadow-xl">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?q=80&w=1200&auto=format&fit=crop" 
-                                alt="iPhone 15 Setup"
+                                src="/assets/match_versatile.png" 
+                                alt="Versatile Tools"
                                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
                         </ShutterReveal>
                     </TiltCard>
                 </div>
                 <ScrollReveal delay={100} className="w-full md:w-1/2 md:text-left">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900">for iPhone 15</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">Versatile Connections</h3>
                     <p className="text-gray-500 leading-loose text-sm font-light">
-                        USB-Cポートを搭載したiPhone 15シリーズに最適。
-                        シェルピンクの柔らかい色合いは、あなたのデバイスをよりパーソナルな存在へと変えます。
-                        高速データ転送により、写真や動画のバックアップも一瞬で。
+                        タブレット、ワイヤレスイヤホン、ポータブルゲーム機。
+                        身の回りに溢れるデジタルデバイスを、一つの哲学で繋ぐ。
+                        Piece Oneは、単なる充電道具ではなく、あなたの暮らしのリズムを整えるための
+                        「最後のひとピース」です。
                     </p>
                 </ScrollReveal>
             </div>
