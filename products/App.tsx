@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import ProductHero from './components/ProductHero';
 import CategoryNav from './components/CategoryNav';
 import ProductIndex from './components/ProductIndex';
-import Footer from './components/Footer';
+import Footer from '../components/Footer';
 import Opening from './components/Opening';
 import MouseStalker from './components/MouseStalker';
 

@@ -88,8 +88,8 @@ const App: React.FC = () => {
               <PieceUtility />
               <PieceMatch />
               <PieceReviews />
-              <PieceSpec />
               <Dialogue />
+              <PieceSpec />
             </div>
           </main>
 
