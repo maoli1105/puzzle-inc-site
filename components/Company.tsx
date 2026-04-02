@@ -41,7 +41,7 @@ const Company: React.FC = () => {
                 <dt className="text-sm font-bold text-gray-500">連絡先</dt>
                 <dd className="text-sm text-gray-900 col-span-2 leading-relaxed font-medium">
                   電話：050-1725-7979<br />
-                  メール：maoli1105@mail.com
+                  メール：info@puzzle-os.com
                 </dd>
               </div>
             </dl>

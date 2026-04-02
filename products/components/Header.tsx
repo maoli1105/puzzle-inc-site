@@ -53,8 +53,8 @@ const Header: React.FC = () => {
         <div className="container mx-auto px-6 flex justify-between items-center relative">
           {/* Logo */}
           <div className="cursor-pointer z-50 relative" onClick={() => window.location.href = '../'}>
-            <img
-              src="assets/logo.png"
+             <img
+              src="/assets/logo.png"
               alt="PUZZLE"
               className={`h-6 md:h-8 w-auto transition-all duration-300 ${isMenuOpen ? 'filter invert brightness-0' : 'opacity-100'}`}
             />

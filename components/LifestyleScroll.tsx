@@ -33,11 +33,11 @@ const LifestyleScroll: React.FC = () => {
   }, []);
 
   const images = [
-    { src: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop", text: "Work" },
-    { src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop", text: "Relax" },
-    { src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop", text: "Connect" },
-    { src: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop", text: "Create" },
-    { src: "https://images.unsplash.com/photo-1499750310159-5254f412c2de?q=80&w=800&auto=format&fit=crop", text: "Life" },
+    { src: "/assets/piceone_xxxx1.jpg", text: "Work" },
+    { src: "/assets/piceone_xxxx2.jpg", text: "Relax" },
+    { src: "/assets/piceone_xxxx3.jpg", text: "Connect" },
+    { src: "/assets/piceone_xxxx4.jpg", text: "Create" },
+    { src: "/assets/piceone_xxxx5.jpg", text: "Life" },
   ];
 
   return (
@@ -64,11 +64,7 @@ const LifestyleScroll: React.FC = () => {
                         alt={img.text} 
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                     />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
-                    <div className="absolute bottom-8 left-8 text-white">
-                        <span className="text-xs font-bold tracking-widest uppercase opacity-70 block mb-2">0{i+1}</span>
-                        <span className="text-4xl font-serif italic">{img.text}</span>
-                    </div>
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/0 transition-colors duration-500" />
                 </div>
             ))}
             

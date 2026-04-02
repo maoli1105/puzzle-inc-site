@@ -24,7 +24,7 @@ const PieceTexture: React.FC = () => {
             <div className="group">
                 <ScrollReveal className="relative aspect-[4/3] rounded-lg overflow-hidden mb-10 bg-black/40 border border-white/5">
                      <ParallaxImage 
-                        src="assets/piceone_x1.jpg" 
+                        src="/assets/piceone_x1.jpg" 
                         alt="Macro Power Connection"
                         className="w-full h-full opacity-40 group-hover:opacity-60 transition-opacity duration-1000"
                         speed={0.03}
@@ -57,7 +57,7 @@ const PieceTexture: React.FC = () => {
             <div className="group">
                 <ScrollReveal className="relative aspect-[4/3] rounded-lg overflow-hidden mb-10 bg-black/40 border border-white/5">
                      <ParallaxImage 
-                        src="assets/piceone_x3.jpg" 
+                        src="/assets/piceone_x3.jpg" 
                         alt="Macro Data Flow"
                         className="w-full h-full opacity-40 group-hover:opacity-60 transition-opacity duration-1000"
                         speed={0.03}

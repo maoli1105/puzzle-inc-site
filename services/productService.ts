@@ -16,7 +16,7 @@ const MOCK_DATA: PieceProduct[] = [
     Piece_Catchphrase: "暮らしの中に、ひとつのピースを。",
     Piece_Description: "240Wの高速充電。480Mbpsのデータ転送。磁力でぴたっとまとまり、いつもすっきり。あなたのデジタルライフを静かに支える、究極のケーブル体験。",
     // カンマ区切りで複数の画像を指定すると、自動的にスライドショーになります
-    Piece_Image_URL: "assets/piece_one_01.png,assets/piece_one_02.png,assets/piece_one_03.png,assets/piece_one_04.png,assets/piece_one_05.png",
+    Piece_Image_URL: "assets/piceone_01_bk.jpg",
     Piece_Detail_URL: "products/piece-one/"
   },
   {
