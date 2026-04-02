@@ -25,7 +25,7 @@ const PieceMatch: React.FC = () => {
                     <TiltCard className="w-full aspect-[4/3] rounded-sm overflow-hidden shadow-xl">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="/assets/match_computing.png" 
+                                src="assets/match_computing.png" 
                                 alt="Professional Workstation"
                                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
@@ -48,7 +48,7 @@ const PieceMatch: React.FC = () => {
                     <TiltCard className="w-full aspect-[4/3] rounded-sm overflow-hidden shadow-xl">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="/assets/match_smartphone.png" 
+                                src="assets/match_smartphone.png" 
                                 alt="Universal Smartphone Standard"
                                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />
@@ -71,7 +71,7 @@ const PieceMatch: React.FC = () => {
                     <TiltCard className="w-full aspect-[4/3] rounded-sm overflow-hidden shadow-xl">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="/assets/match_versatile.png" 
+                                src="assets/match_versatile.png" 
                                 alt="Versatile Tools"
                                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                             />

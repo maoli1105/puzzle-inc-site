@@ -14,35 +14,35 @@ interface GalleryItem {
 const galleryItems: GalleryItem[] = [
   { 
     id: 1, 
-    src: "/assets/piceone_xxxx1.jpg", 
+    src: "assets/piceone_xxxx1.jpg", 
     alt: "Work Desk", 
     speed: 0.05, 
     className: "w-64 aspect-[3/4] top-0 left-0 md:left-12 z-10" 
   },
   { 
     id: 2, 
-    src: "/assets/piceone_xxxx2.jpg", 
+    src: "assets/piceone_xxxx2.jpg", 
     alt: "Cafe Relax", 
     speed: 0.15, 
     className: "w-48 aspect-square top-24 right-4 md:right-12 z-0" 
   },
   { 
     id: 3, 
-    src: "/assets/piceone_xxxx3.jpg", 
+    src: "assets/piceone_xxxx3.jpg", 
     alt: "Detail Shot", 
     speed: 0.08, 
     className: "w-56 aspect-video top-80 left-1/2 transform -translate-x-1/2 z-20" 
   },
   { 
     id: 4, 
-    src: "/assets/piceone_xxxx4.jpg", 
+    src: "assets/piceone_xxxx4.jpg", 
     alt: "Meeting", 
     speed: 0.12, 
     className: "w-64 aspect-[4/5] top-[500px] left-4 md:left-0 z-10" 
   },
   { 
     id: 5, 
-    src: "/assets/piceone_xxxx5.jpg", 
+    src: "assets/piceone_xxxx5.jpg", 
     alt: "On the Go", 
     speed: 0.03, 
     className: "w-56 aspect-square top-[450px] right-0 md:right-8 z-0" 
