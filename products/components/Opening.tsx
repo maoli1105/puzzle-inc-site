@@ -40,7 +40,7 @@ const Opening: React.FC<OpeningProps> = ({ onComplete }) => {
       <div className="relative overflow-hidden p-8">
         {/* Logo: Display as is (Black) */}
         <img 
-          src="/assets/Smile.png" 
+          src="../assets/Smile.png" 
           alt="PUZZLE" 
           className="w-32 md:w-48 h-auto object-contain animate-logo-reveal"
         />

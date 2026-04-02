@@ -56,7 +56,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="cursor-pointer z-50 relative" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img 
-              src="/assets/logo.png" 
+              src="../../assets/logo.png" 
               alt="PUZZLE" 
               className={`h-8 w-auto transition-all duration-300 ${isMenuOpen || !scrolled ? 'filter invert brightness-0 invert' : 'opacity-100'}`}
             />

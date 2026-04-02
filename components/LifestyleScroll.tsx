@@ -33,11 +33,11 @@ const LifestyleScroll: React.FC = () => {
   }, []);
 
   const images = [
-    { src: "/assets/piceone_xxxx1.jpg", text: "Work" },
-    { src: "/assets/piceone_xxxx2.jpg", text: "Relax" },
-    { src: "/assets/piceone_xxxx3.jpg", text: "Connect" },
-    { src: "/assets/piceone_xxxx4.jpg", text: "Create" },
-    { src: "/assets/piceone_xxxx5.jpg", text: "Life" },
+    { src: "./assets/piceone_xxxx1.jpg", text: "Work" },
+    { src: "./assets/piceone_xxxx2.jpg", text: "Relax" },
+    { src: "./assets/piceone_xxxx3.jpg", text: "Connect" },
+    { src: "./assets/piceone_xxxx4.jpg", text: "Create" },
+    { src: "./assets/piceone_xxxx5.jpg", text: "Life" },
   ];
 
   return (
