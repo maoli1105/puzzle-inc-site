@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
 import ShutterReveal from './ShutterReveal';
 
@@ -10,7 +10,36 @@ const colors = [
 ];
 
 const PieceColors: React.FC = () => {
-  const [active, setActive] = useState(colors[0]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const active = colors[currentIndex];
+
+  useEffect(() => {
+    if (isAutoPlaying) {
+      timerRef.current = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % colors.length);
+      }, 4000);
+    }
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isAutoPlaying]);
+
+  const handleColorClick = (index: number) => {
+    setCurrentIndex(index);
+    // Pause auto-play on interaction
+    setIsAutoPlaying(false);
+    
+    // Clear existing timer
+    if (timerRef.current) clearInterval(timerRef.current);
+    
+    // Resume auto-play after 8 seconds of inactivity
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 8000);
+  };
 
   return (
     <section id="colors" className="py-24 border-t border-gray-100">
@@ -28,11 +57,6 @@ const PieceColors: React.FC = () => {
                     style={{ backgroundColor: active.hex }}
                 ></div>
                 
-                {/* 
-                    ShutterReveal wraps the image. 
-                    Since the image changes on click, ShutterReveal might not trigger again unless we key it.
-                    Using key={active.id} forces re-render and re-trigger of shutter effect on color change.
-                */}
                 <ShutterReveal key={active.id} className="w-full h-full">
                     <img 
                         src={active.img} 
@@ -44,10 +68,10 @@ const PieceColors: React.FC = () => {
 
             {/* Controls */}
             <div className="flex items-start space-x-8">
-                {colors.map((c) => (
+                {colors.map((c, index) => (
                     <button
                         key={c.id}
-                        onClick={() => setActive(c)}
+                        onClick={() => handleColorClick(index)}
                         className={`group flex flex-col items-center transition-all duration-300 ${active.id === c.id ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
                     >
                         <span 
