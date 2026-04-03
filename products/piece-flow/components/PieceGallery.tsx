@@ -53,6 +53,8 @@ const PieceGallery: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
 
+  const [activeId, setActiveId] = useState<number | null>(null);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
@@ -85,21 +87,26 @@ const PieceGallery: React.FC = () => {
 
         {/* Mosaic Container */}
         <div className="relative h-[800px] w-full max-w-4xl mx-auto">
-            {galleryItems.map((item) => (
-                <div
-                    key={item.id}
-                    className={`absolute shadow-2xl rounded-lg overflow-hidden transition-transform duration-100 ease-linear will-change-transform grayscale hover:grayscale-0 transition-all duration-700 ${item.className}`}
-                    style={{
-                        transform: `translateY(${offset * item.speed}px)`
-                    }}
-                >
-                    <img 
-                        src={item.src} 
-                        alt={item.alt} 
-                        className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-                    />
-                </div>
-            ))}
+            {galleryItems.map((item) => {
+                const isActive = activeId === item.id;
+                return (
+                    <div
+                        key={item.id}
+                        onClick={() => setActiveId(isActive ? null : item.id)}
+                        className={`absolute shadow-2xl rounded-lg overflow-hidden transition-all duration-700 cursor-pointer ${item.className} ${isActive ? 'z-[100] grayscale-0' : 'grayscale hover:grayscale-0'}`}
+                        style={{
+                            transform: `translateY(${offset * item.speed}px) ${isActive ? 'scale(1.1)' : ''}`,
+                            zIndex: isActive ? 100 : undefined
+                        }}
+                    >
+                        <img 
+                            src={item.src} 
+                            alt={item.alt} 
+                            className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+                        />
+                    </div>
+                );
+            })}
             
             {/* Context Text floating in background */}
             <div 

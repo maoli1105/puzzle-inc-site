@@ -6,6 +6,8 @@ const LifestyleScroll: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  const [focusIndex, setFocusIndex] = useState<number | null>(null);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current || !containerRef.current) return;
@@ -15,16 +17,33 @@ const LifestyleScroll: React.FC = () => {
       const sectionHeight = sectionRect.height;
       const windowHeight = window.innerHeight;
 
-      // Start scrolling when section hits top of viewport
-      // End scrolling when section bottom hits bottom of viewport (minus window height)
-      // Actually simpler: map how much of the section has been scrolled through
-      
       const scrollDistance = sectionHeight - windowHeight;
       let progress = -sectionTop / scrollDistance;
 
-      // Clamp progress between 0 and 1
       progress = Math.max(0, Math.min(1, progress));
       setScrollProgress(progress);
+
+      // Focus Calculation
+      const items = containerRef.current.querySelectorAll('.lifestyle-item');
+      const centerX = window.innerWidth / 2;
+      let closestIndex = -1;
+      let minDistance = Infinity;
+
+      items.forEach((item, idx) => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(itemCenter - centerX);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = idx;
+        }
+      });
+
+      if (minDistance < 300) {
+        setFocusIndex(closestIndex);
+      } else {
+        setFocusIndex(null);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -57,16 +76,22 @@ const LifestyleScroll: React.FC = () => {
             className="flex gap-12 md:gap-24 px-[50vw] will-change-transform"
             style={{ transform: `translateX(calc(-${scrollProgress * 100}%))` }}
         >
-            {images.map((img, i) => (
-                <div key={i} className="relative w-[300px] md:w-[500px] aspect-[4/5] flex-shrink-0 group overflow-hidden rounded-md shadow-xl">
-                    <img 
-                        src={img.src} 
-                        alt={img.text} 
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/0 transition-colors duration-500" />
-                </div>
-            ))}
+            {images.map((img, i) => {
+                const isFocused = focusIndex === i;
+                return (
+                    <div 
+                        key={i} 
+                        className={`lifestyle-item relative w-[300px] md:w-[500px] aspect-[4/5] flex-shrink-0 group overflow-hidden rounded-md shadow-xl transition-all duration-700 ${isFocused ? 'scale-105 z-10' : 'scale-100 z-0'}`}
+                    >
+                        <img 
+                            src={img.src} 
+                            alt={img.text} 
+                            className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-100 ${isFocused ? 'grayscale-0 brightness-105' : 'grayscale brightness-75'}`} 
+                        />
+                        <div className={`absolute inset-0 bg-black/20 transition-opacity duration-500 group-hover:opacity-0 ${isFocused ? 'opacity-0' : 'opacity-100'}`} />
+                    </div>
+                );
+            })}
             
             {/* Ending Text */}
             <div className="w-[400px] flex-shrink-0 flex items-center justify-center">

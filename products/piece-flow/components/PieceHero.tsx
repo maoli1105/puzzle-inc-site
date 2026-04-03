@@ -1,6 +1,5 @@
 
 import React from 'react';
-import TextReveal from './TextReveal';
 import ShutterReveal from './ShutterReveal';
 
 const PieceHero: React.FC = () => {
@@ -29,7 +28,7 @@ const PieceHero: React.FC = () => {
             <ShutterReveal className="w-full h-full" delay={200}>
                 {/* Visual for Bi-color cable */}
                 <img 
-                    src="assets/piece_flow_02.png" 
+                    src="assets/pieceflow_01_bp.jpg" 
                     alt="Piece Flow"
                     className="relative w-full h-full object-contain drop-shadow-2xl animate-float"
                 />

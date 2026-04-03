@@ -5,11 +5,11 @@ import ShutterReveal from './ShutterReveal';
 
 // Cable Color x Connector Color
 const colors = [
-  { id: 'blue-pink', name: 'Blue x Pink', label: 'ブルー×ピンク', bgClass: 'bg-gradient-to-br from-cyan-300 to-pink-300', img: 'assets/piece_flow_02.png', mood: 'bg-cyan-50' },
-  { id: 'white-pink', name: 'White x Pink', label: 'ホワイト×ピンク', bgClass: 'bg-gradient-to-br from-white to-pink-300 border border-gray-100', img: 'assets/piece_flow_03.png', mood: 'bg-pink-50' },
-  { id: 'white-yellow', name: 'White x Yellow', label: 'ホワイト×イエロー', bgClass: 'bg-gradient-to-br from-white to-yellow-300 border border-gray-100', img: 'assets/piece_one_05.png', mood: 'bg-yellow-50' },
-  { id: 'black-yellow', name: 'Black x Yellow', label: 'ブラック×イエロー', bgClass: 'bg-gradient-to-br from-gray-800 to-yellow-400', img: 'assets/piece_one_04.png', mood: 'bg-gray-100' },
-  { id: 'black-black', name: 'Black x Black', label: 'ブラック×ブラック', bgClass: 'bg-gradient-to-br from-gray-900 to-black', img: 'assets/piece_flow_01.png', mood: 'bg-gray-200' },
+  { id: 'blue-pink', name: 'Blue x Pink', label: 'ブルー×ピンク', bgClass: 'bg-gradient-to-br from-cyan-300 to-pink-300', img: 'assets/pieceflow_01_bp.jpg', mood: 'bg-cyan-50' },
+  { id: 'white-pink', name: 'White x Pink', label: 'ホワイト×ピンク', bgClass: 'bg-gradient-to-br from-white to-pink-300 border border-gray-100', img: 'assets/pieceflow_01_wp.jpg', mood: 'bg-pink-50' },
+  { id: 'white-yellow', name: 'White x Yellow', label: 'ホワイト×イエロー', bgClass: 'bg-gradient-to-br from-white to-yellow-300 border border-gray-100', img: 'assets/pieceflow_01_wy.jpg', mood: 'bg-yellow-50' },
+  { id: 'black-yellow', name: 'Black x Yellow', label: 'ブラック×イエロー', bgClass: 'bg-gradient-to-br from-gray-800 to-yellow-400', img: 'assets/pieceflow_01_by.jpg', mood: 'bg-gray-100' },
+  { id: 'black-black', name: 'Black x Black', label: 'ブラック×ブラック', bgClass: 'bg-gradient-to-br from-gray-900 to-black', img: 'assets/pieceflow_01_bb.jpg', mood: 'bg-gray-200' },
 ];
 
 const PieceColors: React.FC = () => {
