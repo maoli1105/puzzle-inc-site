@@ -3,6 +3,7 @@ import React from 'react';
 
 
 const LeftSide: React.FC = () => {
+  const logoSrc = `${import.meta.env.BASE_URL}assets/logo.png`.replace('//', '/');
   return (
     <aside className="hidden lg:flex flex-col justify-between w-full h-screen sticky top-0 py-12 px-8 border-r border-gray-100/50 relative overflow-hidden z-40">
 
@@ -13,7 +14,7 @@ const LeftSide: React.FC = () => {
           className="block w-24 opacity-90 hover:opacity-100 transition-opacity drop-shadow-md"
           aria-label="Back to Home"
         >
-          <img src="/assets/logo.png" alt="Puzzle" className="w-full h-auto opacity-90" />
+          <img src={logoSrc} alt="Puzzle" className="w-full h-auto opacity-90" />
         </a>
       </div>
 

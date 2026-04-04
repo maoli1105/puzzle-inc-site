@@ -47,6 +47,8 @@ const App: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  const logoSrc = `${import.meta.env.BASE_URL}assets/logo.png`.replace('//', '/');
+
   return (
     <div className="antialiased font-sans bg-black text-gray-900 min-h-screen">
       <Opening onComplete={() => setLoading(false)} />
@@ -73,7 +75,7 @@ const App: React.FC = () => {
             {/* Mobile Header */}
             <header className="lg:hidden p-6 absolute top-0 left-0 z-30 w-full flex justify-between items-center">
               <a href="../../" className="block">
-                <img src="/assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
+                <img src={logoSrc} alt="Puzzle" className="w-20 opacity-80" />
               </a>
             </header>
 

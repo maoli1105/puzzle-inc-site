@@ -33,6 +33,8 @@ const Opening: React.FC<OpeningProps> = ({ onComplete }) => {
 
   if (!isVisible) return null;
 
+  const smileSrc = `${import.meta.env.BASE_URL}assets/Smile.png`.replace('//', '/');
+
   return (
     <div 
       className={`fixed inset-0 z-[9999] bg-[#FAFAFA] flex items-center justify-center transition-opacity duration-1000 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}
@@ -40,7 +42,7 @@ const Opening: React.FC<OpeningProps> = ({ onComplete }) => {
       <div className="relative overflow-hidden p-8">
         {/* Logo: Display as is (Black) */}
         <img 
-          src="../../assets/Smile.png" 
+          src={smileSrc} 
           alt="PUZZLE" 
           className="w-32 md:w-48 h-auto object-contain animate-logo-reveal"
         />

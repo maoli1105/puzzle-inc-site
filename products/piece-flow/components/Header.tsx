@@ -49,6 +49,8 @@ const Header: React.FC = () => {
     { label: 'Spec', id: 'spec' },
   ];
 
+  const logoSrc = `${import.meta.env.BASE_URL}assets/logo.png`.replace('//', '/');
+
   return (
     <>
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'} pt-4 pb-4`}>
@@ -56,7 +58,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="cursor-pointer z-50 relative" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img 
-              src="/assets/logo.png" 
+              src={logoSrc} 
               alt="PUZZLE" 
               className="h-8 w-auto transition-all duration-300 opacity-90"
             />
