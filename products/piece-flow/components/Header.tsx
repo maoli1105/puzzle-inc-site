@@ -58,7 +58,7 @@ const Header: React.FC = () => {
             <img 
               src="/assets/logo.png" 
               alt="PUZZLE" 
-              className={`h-8 w-auto transition-all duration-300 ${isMenuOpen ? 'filter invert brightness-0 invert' : 'opacity-100'}`}
+              className="h-8 w-auto transition-all duration-300 opacity-90"
             />
           </div>
 
