@@ -1,11 +1,8 @@
 
 import React from 'react';
 
-interface LeftSideProps {
-  activeSection: string;
-}
 
-const LeftSide: React.FC<LeftSideProps> = ({ activeSection }) => {
+const LeftSide: React.FC = () => {
   return (
     <aside className="hidden lg:flex flex-col justify-between w-full h-screen sticky top-0 py-12 px-8 border-r border-gray-100/50 relative overflow-hidden z-40">
 
@@ -16,7 +13,7 @@ const LeftSide: React.FC<LeftSideProps> = ({ activeSection }) => {
           className="block w-24 opacity-90 hover:opacity-100 transition-opacity drop-shadow-md"
           aria-label="Back to Home"
         >
-          <img src="assets/logo.png" alt="Puzzle" className="w-full h-auto filter brightness-0 invert" />
+          <img src="/assets/logo.png" alt="Puzzle" className="w-full h-auto filter brightness-0 invert" />
         </a>
       </div>
 

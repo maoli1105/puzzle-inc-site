@@ -56,9 +56,9 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="cursor-pointer z-50 relative" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <img 
-              src="assets/logo.png" 
+              src="/assets/logo.png" 
               alt="PUZZLE" 
-              className={`h-8 w-auto transition-all duration-300 ${isMenuOpen ? 'filter invert brightness-0' : (scrolled ? 'opacity-100' : 'opacity-90')}`}
+              className={`h-8 w-auto transition-all duration-300 ${isMenuOpen ? 'filter invert brightness-0 invert' : 'opacity-100'}`}
             />
           </div>
 
@@ -159,8 +159,8 @@ const Header: React.FC = () => {
                          <div>
                             <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Product</h4>
                             <p className="text-lg leading-relaxed font-light text-gray-300">
-                                Piece One<br/>
-                                Mag.Link Silicon Cable
+                                Piece Flow<br/>
+                                Durable Nylon Cable
                             </p>
                         </div>
                     </div>
@@ -169,7 +169,7 @@ const Header: React.FC = () => {
 
             <div className={`mt-auto pt-8 border-t border-white/10 flex justify-between items-end text-xs text-gray-500 uppercase tracking-widest transition-opacity duration-500 delay-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
                 <span>Puzzle Inc.</span>
-                <span>Piece One Special Edition</span>
+                <span>Piece Flow Special Edition</span>
             </div>
         </div>
       </div>

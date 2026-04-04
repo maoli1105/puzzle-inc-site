@@ -38,7 +38,7 @@ const App: React.FC = () => {
       { rootMargin: '-40% 0px -40% 0px' }
     );
 
-    const sections = ['hero', 'concept', 'features', 'structure', 'texture', 'gallery', 'colors', 'utility', 'match', 'gift', 'reviews', 'spec', 'dialogue'];
+    const sections = ['hero', 'concept', 'features', 'structure', 'texture', 'gallery', 'colors', 'utility', 'match', 'gift', 'reviews', 'dialogue', 'spec'];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -65,7 +65,7 @@ const App: React.FC = () => {
 
           {/* Left Column (Fixed) 25% - Transparent to show GlobalBackground */}
           <div className="lg:col-span-1">
-            <LeftSide activeSection={activeSection} />
+            <LeftSide />
           </div>
 
           {/* Center Column (Scrolls) 50% - Semi-transparent white background */}
@@ -73,7 +73,7 @@ const App: React.FC = () => {
             {/* Mobile Header */}
             <header className="lg:hidden p-6 absolute top-0 left-0 z-30 w-full flex justify-between items-center">
               <a href="../../" className="block">
-                <img src="assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
+                <img src="/assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
               </a>
             </header>
 
@@ -89,8 +89,8 @@ const App: React.FC = () => {
               <PieceMatch />
               <PieceGift />
               <PieceReviews />
-              <PieceSpec />
               <Dialogue />
+              <PieceSpec />
             </div>
           </main>
 
