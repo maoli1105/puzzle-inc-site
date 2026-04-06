@@ -97,6 +97,32 @@
     .animate-fade-in {
       animation: fadeIn 1s ease-out forwards;
     }
+
+    @keyframes logoReveal {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-logo-reveal {
+      animation: logoReveal 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes shine {
+      100% {
+        left: 125%;
+      }
+    }
+
+    .animate-shine {
+      animation: shine 1s;
+    }
   </style>
   <script type="importmap">
 {
