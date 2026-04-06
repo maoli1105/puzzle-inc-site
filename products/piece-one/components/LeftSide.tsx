@@ -10,13 +10,13 @@ const LeftSide: React.FC<LeftSideProps> = ({ activeSection }) => {
     <aside className="hidden lg:flex flex-col justify-between w-full h-screen sticky top-0 py-12 px-8 border-r border-white/20 relative overflow-hidden z-40">
 
       {/* Content Layer */}
-      <div className="relative z-10">
+      <div className="relative z-10 font-bold">
         <a
           href="../../"
-          className="block w-24 opacity-90 hover:opacity-100 transition-opacity drop-shadow-md"
+          className="block w-32 opacity-90 hover:opacity-100 transition-opacity drop-shadow-md"
           aria-label="Back to Home"
         >
-          <img src="../../assets/logo.png" alt="Puzzle" className="w-full h-auto filter brightness-0 invert" />
+          <img src="../../assets/logo.png" alt="Puzzle" className="w-full h-auto filter invert" />
         </a>
       </div>
 

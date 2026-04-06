@@ -65,14 +65,14 @@ const PieceFeatures: React.FC = () => {
                 </ScrollReveal>
             </div>
 
-            {/* Point 3: 240W */}
+            {/* Point 3: Zinc Alloy */}
             <div className="group">
                 <div className="w-full aspect-square mb-4 relative">
                     <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=800&auto=format&fit=crop" 
-                                alt="240W Power"
+                                src="../../assets/pieceflow_x3.jpg" 
+                                alt="Zinc Alloy Housing"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                         </ShutterReveal>
@@ -81,11 +81,11 @@ const PieceFeatures: React.FC = () => {
                 <ScrollReveal delay={100} className="px-4 text-center">
                     <div className="inline-flex flex-col items-center mb-3">
                         <span className="text-xl font-bold text-yellow-400 mb-1">03</span>
-                        <h3 className="text-lg font-bold text-gray-900">240W Power</h3>
+                        <h3 className="text-lg font-bold text-gray-900">Zinc Alloy Housing</h3>
                     </div>
                     <p className="text-sm text-gray-500 leading-loose">
-                        可愛らしい見た目に、プロ仕様のスペックを。<br/>
-                        最大240W出力で、最新のノートPCも急速充電が可能。
+                        コネクタ部分には、肌なじみの良いマットな亜鉛合金を採用。<br/>
+                        シリコンのやわらかさと、メタルの重厚さが織りなすコントラストが際立ちます。
                     </p>
                 </ScrollReveal>
             </div>

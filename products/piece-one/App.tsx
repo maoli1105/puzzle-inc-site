@@ -8,6 +8,7 @@ import Opening from './components/Opening';
 import GlobalBackground from './components/GlobalBackground';
 
 import PieceHero from './components/PieceHero';
+import Header from './components/Header';
 import PieceConcept from './components/PieceConcept';
 import PieceFeatures from './components/PieceFeatures';
 import PieceStructure from './components/PieceStructure';
@@ -58,6 +59,10 @@ const App: React.FC = () => {
       <div className="noise-overlay" />
       {/* FloatingPieces removed for performance */}
 
+      <div className="lg:hidden">
+        <Header />
+      </div>
+
       <div className={`transition-opacity duration-1000 relative z-10 ${loading ? 'opacity-0' : 'opacity-100'}`}>
 
         {/* Main 3-Column Grid Layout */}
@@ -70,13 +75,6 @@ const App: React.FC = () => {
 
           {/* Center Column (Scrolls) 50% - Semi-transparent white background */}
           <main className="lg:col-span-2 w-full relative z-10 bg-white/90 backdrop-blur-sm shadow-2xl min-h-screen">
-            {/* Mobile Header */}
-            <header className="lg:hidden p-6 absolute top-0 left-0 z-30 w-full flex justify-between items-center">
-              <a href="../../" className="block">
-                <img src="../../assets/logo.png" alt="Puzzle" className="w-20 opacity-80" />
-              </a>
-            </header>
-
             <div className="pb-24 lg:pb-0">
               <PieceHero />
               <PieceConcept />

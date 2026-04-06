@@ -19,15 +19,21 @@ const PieceHero: React.FC = () => {
             </h1>
         </div>
 
-        {/* Product Visual */}
-        <div className="relative w-64 h-64 md:w-80 md:h-80 mb-12">
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white rounded-full opacity-50 filter blur-xl animate-pulse"></div>
-            <ShutterReveal className="w-full h-full" delay={200}>
-                <img 
-                    src="../../assets/piceone_01_bk.jpg" 
-                    alt="Piece One"
-                    className="relative w-full h-full object-contain drop-shadow-2xl animate-float"
-                />
+        {/* Product Visual - Editorial Frame Style */}
+        <div className="relative w-72 h-72 md:w-96 md:h-96 mb-12 group perspective-1000">
+            {/* Soft Glow Background */}
+            <div className="absolute inset-x-0 bottom-[-10%] h-1/4 bg-gray-900/5 blur-2xl rounded-full scale-x-150"></div>
+            
+            <ShutterReveal className="w-full h-full relative z-10" delay={400}>
+                <div className="w-full h-full p-2 bg-white shadow-xl rounded-sm overflow-hidden transform-all duration-1000 ease-out group-hover:scale-[1.02]">
+                    <img 
+                        src="../../assets/piceone_01_bk.jpg" 
+                        alt="Piece One"
+                        className="w-full h-full object-cover animate-ken-burns"
+                    />
+                    {/* Glass Sheen */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                </div>
             </ShutterReveal>
         </div>
         

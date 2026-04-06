@@ -23,7 +23,7 @@ const PieceSpec: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-3 py-5 border-b border-gray-100">
                     <dt className="text-gray-400 font-bold">長さ</dt>
-                    <dd className="col-span-2 font-medium">50cm / 1.0m / 2.0m</dd>
+                    <dd className="col-span-2 font-medium">50cm / 1.0m / 1.5m</dd>
                 </div>
                 <div className="grid grid-cols-3 py-5 border-b border-gray-100">
                     <dt className="text-gray-400 font-bold">カラー</dt>
@@ -47,9 +47,6 @@ const PieceSpec: React.FC = () => {
             </div>
         </ScrollReveal>
 
-        <div className="mt-16 text-center text-xs text-gray-400">
-            <p>Designed by Puzzle Inc. in Japan</p>
-        </div>
       </div>
     </section>
   );

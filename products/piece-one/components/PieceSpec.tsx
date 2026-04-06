@@ -46,9 +46,6 @@ const PieceSpec: React.FC = () => {
             </div>
         </ScrollReveal>
 
-        <div className="mt-16 text-center text-xs text-gray-400">
-            <p>Designed by Puzzle Inc. in Japan</p>
-        </div>
       </div>
     </section>
   );

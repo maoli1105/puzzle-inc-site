@@ -54,11 +54,11 @@ const Header: React.FC = () => {
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'} pt-4 pb-4`}>
         <div className="container mx-auto px-6 flex justify-between items-center relative">
           {/* Logo */}
-          <div className="cursor-pointer z-50 relative" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div className="cursor-pointer z-50 relative" onClick={() => window.location.href = '../../'}>
             <img 
               src="../../assets/logo.png" 
               alt="PUZZLE" 
-              className={`h-8 w-auto transition-all duration-300 ${isMenuOpen || !scrolled ? 'filter invert brightness-0 invert' : 'opacity-100'}`}
+              className={`h-10 w-auto transition-all duration-300 ${isMenuOpen ? 'filter invert' : 'opacity-100'}`}
             />
           </div>
 
@@ -155,13 +155,18 @@ const Header: React.FC = () => {
 
                 {/* Right Column: Information */}
                 <div className={`w-full md:w-1/3 flex flex-col justify-center md:pl-12 mt-12 md:mt-0 transition-all duration-700 delay-300 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <div className="space-y-12">
+                    <div className="space-y-8">
                          <div>
                             <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">Product</h4>
                             <p className="text-lg leading-relaxed font-light text-gray-300">
                                 Piece One<br/>
                                 Mag.Link Silicon Cable
                             </p>
+                        </div>
+                        <div className="pt-8 border-t border-white/5 space-y-4">
+                            <a href="../../contact/" className="block text-sm text-gray-400 hover:text-white transition-colors">Contact</a>
+                            <a href="../../privacy/" className="block text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                            <a href="../../terms/" className="block text-sm text-gray-400 hover:text-white transition-colors">Terms of Service</a>
                         </div>
                     </div>
                 </div>

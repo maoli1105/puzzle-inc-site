@@ -65,10 +65,6 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
                 Add to Cart
              </button>
         </div>
-        
-        <div className="mt-8 text-[10px] text-gray-400 text-right">
-            <p>© 2025 Puzzle Inc.</p>
-        </div>
       </div>
 
       {/* Clear overlay */}

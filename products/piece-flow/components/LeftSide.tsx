@@ -11,7 +11,7 @@ const LeftSide: React.FC = () => {
       <div className="relative z-10">
         <a
           href="../../"
-          className="block w-24 opacity-90 hover:opacity-100 transition-opacity drop-shadow-md"
+          className="block w-32 opacity-90 hover:opacity-100 transition-opacity drop-shadow-md"
           aria-label="Back to Home"
         >
           <img src={logoSrc} alt="Puzzle" className="w-full h-auto opacity-90" />

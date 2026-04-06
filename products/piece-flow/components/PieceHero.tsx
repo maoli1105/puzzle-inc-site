@@ -22,16 +22,21 @@ const PieceHero: React.FC = () => {
             </p>
         </div>
 
-        {/* Product Visual */}
-        <div className="relative w-64 h-64 md:w-80 md:h-80 mb-12">
-            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-200 to-pink-200 rounded-full opacity-60 filter blur-3xl animate-pulse"></div>
-            <ShutterReveal className="w-full h-full" delay={200}>
-                {/* Visual for Bi-color cable */}
-                <img 
-                    src="../../assets/pieceflow_02_bp.jpg" 
-                    alt="Piece Flow"
-                    className="relative w-full h-full object-contain drop-shadow-2xl animate-float"
-                />
+        {/* Product Visual - Editorial Frame Style */}
+        <div className="relative w-72 h-72 md:w-96 md:h-96 mb-12 group perspective-1000">
+            {/* Color Atmosphere */}
+            <div className="absolute inset-x-0 bottom-[-15%] h-1/3 bg-gradient-to-r from-cyan-200/20 to-pink-200/20 blur-3xl rounded-full scale-x-125"></div>
+            
+            <ShutterReveal className="w-full h-full relative z-10" delay={400}>
+                <div className="w-full h-full p-2 bg-white shadow-xl rounded-sm overflow-hidden transform-all duration-1000 ease-out group-hover:scale-[1.02]">
+                    <img 
+                        src="../../assets/pieceflow_02_bp.jpg" 
+                        alt="Piece Flow"
+                        className="w-full h-full object-cover animate-ken-burns"
+                    />
+                    {/* Glass Sheen */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                </div>
             </ShutterReveal>
         </div>
         
