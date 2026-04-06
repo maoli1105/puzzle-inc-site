@@ -56,7 +56,7 @@ const Header: React.FC = () => {
              <img
               src="../assets/logo.png"
               alt="PUZZLE"
-              className={`h-6 md:h-8 w-auto transition-all duration-300 ${isMenuOpen ? 'filter invert brightness-0' : 'opacity-100'}`}
+              className={`h-10 w-auto transition-all duration-300 ${isMenuOpen ? 'filter invert' : 'opacity-100'}`}
             />
           </div>
 
@@ -136,6 +136,15 @@ const Header: React.FC = () => {
                 </button>
               ))}
             </nav>
+
+            {/* Right Column (Mobile bottom): Legal Links */}
+            <div className={`w-full md:w-1/3 flex flex-col justify-center md:pl-12 mt-12 md:mt-0 transition-all duration-700 delay-300 ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <div className="space-y-6 pt-8 border-t border-white/5 md:border-none">
+                    <a href="../contact/" className="block text-sm text-gray-400 hover:text-white transition-colors tracking-widest">Contact</a>
+                    <a href="../privacy/" className="block text-sm text-gray-400 hover:text-white transition-colors tracking-widest">Privacy Policy</a>
+                    <a href="../terms/" className="block text-sm text-gray-400 hover:text-white transition-colors tracking-widest">Terms of Service</a>
+                </div>
+            </div>
           </div>
           <div className={`mt-auto pt-8 border-t border-white/10 flex justify-between items-end text-xs text-gray-500 uppercase tracking-widest transition-opacity duration-500 delay-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
             <span>Puzzle Inc.</span>
