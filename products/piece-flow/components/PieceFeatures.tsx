@@ -17,11 +17,11 @@ const PieceFeatures: React.FC = () => {
             
             {/* Point 1: Bi-color */}
             <div className="group">
-                <div className="w-full aspect-video mb-6 relative">
-                    <TiltCard className="w-full h-full overflow-hidden rounded-2xl shadow-sm border border-gray-100">
+                <div className="w-full aspect-square mb-4 relative">
+                    <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop" 
+                                src="../../assets/pieceflow_x1.jpg" 
                                 alt="Bi-color Design"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
@@ -42,11 +42,11 @@ const PieceFeatures: React.FC = () => {
 
             {/* Point 2: Silicon */}
             <div className="group">
-                <div className="w-full aspect-video mb-6 relative">
-                    <TiltCard className="w-full h-full overflow-hidden rounded-2xl shadow-sm border border-gray-100">
+                <div className="w-full aspect-square mb-4 relative">
+                    <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
-                                src="https://images.unsplash.com/photo-1516961642265-531546e84af2?q=80&w=800&auto=format&fit=crop" 
+                                src="../../assets/pieceflow_x2.jpg" 
                                 alt="Liquid Silicon"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
@@ -67,8 +67,8 @@ const PieceFeatures: React.FC = () => {
 
             {/* Point 3: 240W */}
             <div className="group">
-                <div className="w-full aspect-video mb-6 relative">
-                    <TiltCard className="w-full h-full overflow-hidden rounded-2xl shadow-sm border border-gray-100">
+                <div className="w-full aspect-square mb-4 relative">
+                    <TiltCard className="w-full h-full overflow-hidden rounded-sm shadow-md">
                         <ShutterReveal className="w-full h-full">
                             <img 
                                 src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=800&auto=format&fit=crop" 
