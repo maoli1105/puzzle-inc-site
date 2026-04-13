@@ -37,16 +37,25 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
         {/* Main Copy */}
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-          <TextReveal delay={500} stagger={0.08}>つながる、 ちから。</TextReveal>
+        {/* Main Japanese Copy - Responsive Line Break */}
+        <h2 className="text-3xl md:text-5xl font-bold tracking-[0.2em] mb-12 flex flex-col md:flex-row items-center justify-center">
+          <TextReveal delay={500} stagger={0.08}>暮らしをもっと、</TextReveal>
+          <TextReveal delay={1300} stagger={0.08}>パズルする。</TextReveal>
         </h2>
-        <div className="text-sm md:text-lg font-light tracking-[0.3em] opacity-80 mb-12 uppercase">
-           <TextReveal delay={1500} stagger={0.03}>The power of connection.</TextReveal>
+
+        {/* English Subtitles - Reverted to Original Size */}
+        <div className="flex flex-col items-center mb-12 space-y-2 uppercase opacity-80 font-light tracking-[0.3em]">
+          <div className="text-sm md:text-lg">
+             <TextReveal delay={1500} stagger={0.03}>Never knowing best. Still moving.</TextReveal>
+          </div>
+          <div className="text-sm md:text-lg">
+             <TextReveal delay={2200} stagger={0.03}>An endless puzzle.</TextReveal>
+          </div>
         </div>
         
         {/* Buttons */}
         <div 
-            className="flex flex-col sm:flex-row gap-8 fade-in-up-delay-2 items-center"
+            className="flex flex-col sm:flex-row gap-8 fade-in-up-delay-4 items-center"
         >
           <MagneticButton>
             <button 

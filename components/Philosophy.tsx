@@ -21,56 +21,56 @@ const Philosophy: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        <div className="space-y-12 text-center leading-loose font-medium text-gray-800 text-lg md:text-xl md:leading-relaxed tracking-wide">
+        <div className="space-y-16 text-center leading-loose font-medium text-gray-800 text-lg md:text-xl md:leading-relaxed tracking-wide">
           
           <ScrollReveal delay={100}>
             <p className="mb-4">
-              一人ひとりの創造が、世界の風景を変えていく。<br />
-              私たち株式会社パズルの想いは、そんな信念から始まっています。
+              一人ひとりの選択が、世界の風景を少しずつ変えていく。<br />
+              私たちは、その変化の中にいます。
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
             <p className="mb-4">
-              私たちが大切にしているのは、暮らしに寄り添う「思想」と<br className="hidden md:inline"/>
-              ものづくりに通じる「美意識」、そして他者と共に在る「在り方」です。<br />
-              単なる製品ではなく、思いのこもった“かけら”を届けたい。<br className="hidden md:inline"/>
-              それが、私たちのものづくりの出発点です。
+              正解はない。最善も、常に更新され続ける。<br />
+              それでも暮らしは、止まらない。未完成のまま、続いていく。
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={300}>
             <p className="mb-4">
-              暮らしとは、無数のパズルピースでできています。<br />
-              家族との時間、仕事に向き合う日々、ふとしたリラックスの瞬間。<br />
-              そのどれもが、ひとり一人の「形」によって違った意味を持つ。
+              足りないもの。うまくはまらない時間。<br />
+              その一つひとつを整え、前に進めること。<br />
+              それが、私たちの役割です。
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={400}>
             <p className="mb-4">
-              私たちは、あなたの暮らしの一片にそっと寄り添い、<br />
-              心地よく、美しく、そして少し楽しくなるような<br />
-              プロダクトを届けたいと考えています。
+              私たちが届けるのは、完成された答えではありません。<br />
+              日々の中に自然に溶け込み、次の一歩を支える“ピース”です。
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={500}>
             <p className="mb-4">
-              パズルのように、一つひとつのピースがつながったとき、<br />
-              まだ誰も見たことのない、あたたかな風景が広がっていく。<br />
-              私たちが目指すのは、そんな「暮らしの完成図」です。
+              積み重ねが、かたちになる。<br />
+              まだ見えない未来をつくっていく。
             </p>
           </ScrollReveal>
-
-          <ScrollReveal delay={600} className="pt-20">
-            {/* Adjusted: Single line, smaller text size */}
-            <div className="text-2xl md:text-4xl font-bold text-gray-900 tracking-tight inline-block whitespace-nowrap">
-               <TextReveal delay={200} stagger={0.05}>暮らしをもっと、パズルする。</TextReveal>
+          
+          <ScrollReveal delay={700} className="pt-20 pb-20">
+            <div className="text-xl md:text-3xl font-bold text-gray-900 tracking-tight leading-loose space-y-4">
+              <div className="block opacity-90">
+                <TextReveal delay={100} stagger={0.03}>Never knowing what’s best. Still moving.</TextReveal>
+              </div>
+              <div className="block opacity-90">
+                <TextReveal delay={1000} stagger={0.04}>An endless puzzle.</TextReveal>
+              </div>
+              <div className="block pt-4 text-2xl md:text-4xl">
+                <TextReveal delay={2000} stagger={0.08}>暮らしをもっと、パズルする。</TextReveal>
+              </div>
             </div>
-            <p className="text-sm text-gray-500 mt-6 tracking-widest uppercase font-bold">
-              それが、私たちのブランドストーリーです。
-            </p>
           </ScrollReveal>
         </div>
       </div>
