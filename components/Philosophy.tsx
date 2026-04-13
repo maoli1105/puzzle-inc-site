@@ -60,15 +60,29 @@ const Philosophy: React.FC = () => {
           </ScrollReveal>
           
           <ScrollReveal delay={700} className="pt-20 pb-20">
-            <div className="text-xl md:text-3xl font-bold text-gray-900 tracking-tight leading-loose space-y-4">
-              <div className="block opacity-90">
-                <TextReveal delay={100} stagger={0.03}>Never knowing what’s best. Still moving.</TextReveal>
+            <div className="font-bold text-gray-900 tracking-tight leading-relaxed space-y-6">
+              {/* English: Smaller on mobile to prevent mid-word breaking */}
+              <div className="text-lg md:text-3xl opacity-90">
+                <div className="block md:inline">
+                  <TextReveal delay={100} stagger={0.03}>Never knowing what’s best.</TextReveal>
+                </div>
+                <div className="block md:inline md:ml-2">
+                  <TextReveal delay={800} stagger={0.03}>Still moving.</TextReveal>
+                </div>
               </div>
-              <div className="block opacity-90">
-                <TextReveal delay={1000} stagger={0.04}>An endless puzzle.</TextReveal>
+              
+              <div className="text-lg md:text-3xl opacity-90">
+                <TextReveal delay={1500} stagger={0.04}>An endless puzzle.</TextReveal>
               </div>
-              <div className="block pt-4 text-2xl md:text-4xl">
-                <TextReveal delay={2000} stagger={0.08}>暮らしをもっと、パズルする。</TextReveal>
+
+              {/* Japanese: Balanced size for mobile */}
+              <div className="pt-6 text-2xl md:text-4xl leading-tight">
+                <div className="block md:inline">
+                  <TextReveal delay={2200} stagger={0.08}>暮らしをもっと、</TextReveal>
+                </div>
+                <div className="block md:inline">
+                  <TextReveal delay={3000} stagger={0.08}>パズルする。</TextReveal>
+                </div>
               </div>
             </div>
           </ScrollReveal>
