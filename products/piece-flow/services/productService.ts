@@ -23,7 +23,7 @@ const MOCK_DATA: PieceProduct[] = [
     id: "2",
     Piece_Name: "Piece Flow",
     Piece_Catchphrase: "流れを止めない、美しさ。",
-    Piece_Description: "強靭さと、しなやかさを。高耐久ナイロン編組と金属コネクタの輝きが、確かな接続と上質な手触りを約束します。日常のノイズを忘れさせる、スムーズなデータフロー。",
+    Piece_Description: "シリコンの滑らかな手触りと、亜鉛合金コネクタの重厚な輝き。遊び心のあるバイカラーデザインが、日常に柔らかなアクセントを添えます。絡まずしなやかに、あなたの時間を止めないスムーズなケーブル体験を。",
     Piece_Image_URL: "assets/pieceflow_02_bp.jpg",
     Piece_Detail_URL: "#"
   }

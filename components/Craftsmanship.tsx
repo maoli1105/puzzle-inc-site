@@ -41,7 +41,7 @@ const Craftsmanship: React.FC = () => {
               <ScrollReveal direction='right' className="w-full h-full">
                 <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
                     <ParallaxImage 
-                        src="https://images.unsplash.com/photo-1535295972055-1c762f4483e5?q=80&w=1200&auto=format&fit=crop" 
+                        src="./assets/piceone_x3.jpg" 
                         alt="Zinc Alloy Texture"
                         className="w-full h-full rounded-sm opacity-80"
                     />
@@ -56,7 +56,7 @@ const Craftsmanship: React.FC = () => {
                <ScrollReveal direction='left' className="w-full h-full">
                 <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
                     <ParallaxImage 
-                        src="https://images.unsplash.com/photo-1516961642265-531546e84af2?q=80&w=1200&auto=format&fit=crop" 
+                        src="./assets/pieceflow_x2.jpg" 
                         alt="Silicon Texture"
                         className="w-full h-full rounded-sm opacity-80"
                     />
@@ -84,13 +84,13 @@ const Craftsmanship: React.FC = () => {
             <div className="md:col-span-4">
               <ScrollReveal>
                 <span className="text-6xl md:text-8xl font-thin text-white/10 block mb-4">03</span>
-                <h3 className="text-2xl font-bold mb-4">Sound</h3>
-                <h4 className="text-lg text-gray-300 font-medium mb-6">カチッ。それが、心地よさの合図。</h4>
+                <h3 className="text-2xl font-bold mb-4">Smart</h3>
+                <h4 className="text-lg text-gray-300 font-medium mb-6">ピタッ。一瞬で整う、新しい快感。</h4>
                 <p className="text-gray-500 leading-loose font-light">
-                  ケーブルをまとめる、その一瞬の動作にも快感を。
-                  計算された磁力により、吸い付くようにまとまるマグネットクリップ。
-                  「カチッ」という小さく小気味よい音は、片付けが完了した合図であり、
-                  整った空間へのスイッチでもあります。
+                  ケーブルを束ねる煩わしさを、過去のものに。
+                  計算された磁力により、ケーブル同士が自然に吸い付き「ピタッ」とまとまるマグネットケーブル。
+                  絡まることなく、流れるように美しい円を描いて収まるその感覚は、
+                  あなたの空間を常に美しく、スマートに保ちます。
                 </p>
               </ScrollReveal>
             </div>
@@ -99,7 +99,7 @@ const Craftsmanship: React.FC = () => {
                <ScrollReveal direction='right' className="w-full h-full">
                 <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
                     <ParallaxImage 
-                        src="https://images.unsplash.com/photo-1469037784699-75dcff1cbf75?q=80&w=1200&auto=format&fit=crop" 
+                        src="./assets/piceone_x1.jpg" 
                         alt="Magnetic Connection"
                         className="w-full h-full rounded-sm opacity-80"
                     />

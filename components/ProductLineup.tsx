@@ -148,7 +148,7 @@ const ProductLineup: React.FC = () => {
               delay={200}
             >
               <div className="text-3xl md:text-4xl font-bold text-gray-400 mb-4 tracking-tight inline-block">
-                Next Phase
+                Next Piece
               </div>
               <p className="text-lg text-gray-400 font-medium mb-6">新しいピースが、まもなく届きます。</p>
               <p className="text-gray-400 leading-loose font-light mb-8 max-w-md mx-auto md:mx-0">

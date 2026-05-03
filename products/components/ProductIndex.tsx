@@ -93,7 +93,7 @@ const ProductIndex: React.FC = () => {
                                 <span className="text-xs font-bold tracking-[0.2em] uppercase">New Category</span>
                             </div>
                             <div className="mt-8 px-2">
-                                <h3 className="text-xl font-bold text-gray-300 mb-2">Next Products</h3>
+                                <h3 className="text-xl font-bold text-gray-300 mb-2">Next Piece</h3>
                                 <p className="text-gray-400 font-light text-sm leading-relaxed">
                                     現在、新しい「暮らしの最適解」を開発中です。<br/>
                                     デスク周りを美しく整える、新しい提案にご期待ください。
