@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PuzzleWork | Puzzle Inc.</title>
+  <title>Puzzle Work | Puzzle Inc.</title>
   <link rel="icon" type="image/png" href="../../assets/Smile.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +51,32 @@
 
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(0, 0, 0, 0.15);
+    }
+
+    @keyframes logoReveal {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-logo-reveal {
+      animation: logoReveal 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes shine {
+      100% {
+        left: 125%;
+      }
+    }
+
+    .animate-shine {
+      animation: shine 1s;
     }
   </style>
   <script type="importmap">
