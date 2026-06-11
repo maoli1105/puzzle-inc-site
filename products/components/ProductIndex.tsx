@@ -86,19 +86,27 @@ const ProductIndex: React.FC = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
                     {isComingSoon ? (
-                        /* Coming Soon Placeholder */
-                        <ScrollReveal className="w-full relative group">
-                            <div className="w-full aspect-[4/3] bg-gray-50 rounded-2xl border border-dashed border-gray-200 flex flex-col items-center justify-center text-gray-400">
-                                <span className="text-4xl font-thin mb-4 opacity-30">Coming Soon</span>
-                                <span className="text-xs font-bold tracking-[0.2em] uppercase">New Category</span>
-                            </div>
-                            <div className="mt-8 px-2">
-                                <h3 className="text-xl font-bold text-gray-300 mb-2">Next Piece</h3>
-                                <p className="text-gray-400 font-light text-sm leading-relaxed">
-                                    現在、新しい「暮らしの最適解」を開発中です。<br/>
-                                    デスク周りを美しく整える、新しい提案にご期待ください。
-                                </p>
-                            </div>
+                        /* Coming Soon Placeholder with active link */
+                        <ScrollReveal className="w-full relative group cursor-pointer">
+                            <a href="puzzlework/" className="block">
+                                <div className="w-full aspect-[4/3] bg-gray-50 rounded-2xl border border-dashed border-gray-200 flex flex-col items-center justify-center text-gray-400">
+                                    <span className="text-4xl font-thin mb-4 opacity-30">Coming Soon</span>
+                                    <span className="text-xs font-bold tracking-[0.2em] uppercase">Next Piece</span>
+                                </div>
+                                <div className="mt-8 px-2">
+                                    <h3 className="text-xl font-bold text-gray-400 mb-2">Next Piece: Puzzle Work</h3>
+                                    <p className="text-gray-800 font-medium mb-3 text-sm">人の歩みを、未来へ渡す。</p>
+                                    <p className="text-gray-500 font-light text-xs leading-relaxed mb-6">
+                                        人は去る。物理的な接続を取り戻すために、Piece One を作りました。<br/>
+                                        人の歩みを未来へ繋ぐために、Puzzle Work を作ります。<br/>
+                                        現在、クローズドβにて静かに開発を進めています。
+                                    </p>
+                                    <div className="inline-flex items-center text-xs font-bold tracking-[0.1em] uppercase text-gray-900 hover:text-gray-700 transition-colors">
+                                        Learn More
+                                        <svg className="w-3 h-3 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </div>
+                                </div>
+                            </a>
                         </ScrollReveal>
                     ) : (
                         categoryProducts.map((product) => {

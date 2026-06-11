@@ -14,6 +14,7 @@ export default defineConfig({
         products: resolve(__dirname, 'products/index.html'),
         pieceOne: resolve(__dirname, 'products/piece-one/index.html'),
         pieceFlow: resolve(__dirname, 'products/piece-flow/index.html'),
+        puzzleWork: resolve(__dirname, 'products/puzzlework/index.html'),
         privacy: resolve(__dirname, 'privacy/index.html'),
         terms: resolve(__dirname, 'terms/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
