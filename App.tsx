@@ -68,7 +68,7 @@ const App: React.FC = () => {
             <Hero />
             <Philosophy />
             <ProductLineup />
-            <NoiseToSilence />
+            {/* <NoiseToSilence /> */}
             <Craftsmanship />
             <LifestyleScroll />
             <News />

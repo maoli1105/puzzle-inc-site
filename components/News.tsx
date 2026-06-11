@@ -14,31 +14,17 @@ interface NewsItem {
 const newsData: NewsItem[] = [
   {
     id: 1,
-    date: '2025.04.15',
+    date: '2026.05.15',
     category: 'Product',
-    title: '新色「ミッドナイト・ブルー」が登場。',
-    image: 'https://images.unsplash.com/photo-1616440347437-b1c73416ef12?q=80&w=800&auto=format&fit=crop'
+    title: '新商品「Piece One」登場。',
+    image: 'assets/piceone_01_bk.jpg'
   },
   {
     id: 2,
-    date: '2025.03.20',
-    category: 'Event',
-    title: '東京・青山にてポップアップストア「Piece of Life」を開催。',
-    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 3,
-    date: '2025.02.10',
-    category: 'Media',
-    title: 'デザイン誌「AXIS」に代表インタビューが掲載されました。',
-    image: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 4,
-    date: '2025.01.05',
-    category: 'Award',
-    title: 'Piece Oneがグッドデザイン賞を受賞しました。',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800&auto=format&fit=crop'
+    date: '2026.05.15',
+    category: 'Product',
+    title: '新商品「Piece Flow」登場。',
+    image: 'assets/pieceflow_02_bp.jpg'
   }
 ];
 
