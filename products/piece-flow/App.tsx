@@ -39,7 +39,7 @@ const App: React.FC = () => {
       { rootMargin: '-40% 0px -40% 0px' }
     );
 
-    const sections = ['hero', 'concept', 'features', 'structure', 'texture', 'gallery', 'colors', 'utility', 'match', 'gift', 'reviews', 'dialogue', 'spec'];
+    const sections = ['hero', 'concept', 'features', 'texture', 'gallery', 'colors', 'match', 'dialogue', 'spec'];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -81,14 +81,14 @@ const App: React.FC = () => {
               <PieceHero />
               <PieceConcept />
               <PieceFeatures />
-              <PieceStructure />
               <PieceTexture />
               <PieceGallery />
               <PieceColors />
-              <PieceUtility />
               <PieceMatch />
-              <PieceGift />
-              <PieceReviews />
+              {/* Gift Share the Flow section is hidden */}
+              {/* <PieceGift /> */}
+              {/* Voices Creators' View section is hidden */}
+              {/* <PieceReviews /> */}
               <Dialogue />
               <PieceSpec />
             </div>

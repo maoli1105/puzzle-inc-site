@@ -11,20 +11,20 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
     { id: 'hero', label: 'Top' },
     { id: 'concept', label: 'Concept' },
     { id: 'features', label: 'Features' },
-    { id: 'structure', label: 'Anatomy' },
     { id: 'texture', label: 'Tactile' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'colors', label: 'Colors' },
-    { id: 'utility', label: 'Utility' },
     { id: 'match', label: 'Match' },
-    { id: 'gift', label: 'Gift' },
-    { id: 'reviews', label: 'Voices' },
     { id: 'spec', label: 'Spec' },
   ];
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleAddToCart = () => {
+    window.open('https://www.amazon.co.jp/dp/B0H1DKX9GP', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -60,6 +60,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
         {/* Add to Cart Button */}
         <div className="w-full flex justify-end">
              <button 
+                onClick={handleAddToCart}
                 className={`w-full bg-gray-900 text-white font-bold tracking-[0.2em] uppercase text-xs py-4 px-8 rounded-full shadow-lg hover:shadow-xl hover:bg-pink-400 transition-all duration-300 transform hover:-translate-y-1 ${activeSection === 'spec' ? 'animate-pulse ring-4 ring-pink-200' : ''}`}
              >
                 Add to Cart

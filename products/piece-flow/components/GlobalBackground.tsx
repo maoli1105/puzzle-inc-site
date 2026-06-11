@@ -18,14 +18,10 @@ const GlobalBackground: React.FC<GlobalBackgroundProps> = ({ activeSection }) =>
     hero: { type: 'image', src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop' }, // Pastel/Light
     concept: { type: 'image', src: 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1600&auto=format&fit=crop' }, // People/Connection
     features: { type: 'image', src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1600&auto=format&fit=crop' }, // Soft texture
-    structure: { type: 'image', src: 'https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?q=80&w=1600&auto=format&fit=crop' }, // Clean layers
     texture: { type: 'image', src: 'https://images.unsplash.com/photo-1534643960519-11ad79bc19df?q=80&w=1600&auto=format&fit=crop' }, // Soft focus
     gallery: { type: 'image', src: 'https://images.unsplash.com/photo-1525909002094-6b8a31814804?q=80&w=1600&auto=format&fit=crop' }, // Lifestyle/Fashion
     colors: { type: 'image', src: 'https://images.unsplash.com/photo-1502005229766-939cb934d60b?q=80&w=1600&auto=format&fit=crop' }, // Colorful
-    utility: { type: 'image', src: 'https://images.unsplash.com/photo-1499750310159-5254f412c2de?q=80&w=1600&auto=format&fit=crop' }, // Desk/Clean
     match: { type: 'image', src: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1600&auto=format&fit=crop' }, // Fashion/Shopping
-    gift: { type: 'image', src: 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1600&auto=format&fit=crop' }, // Gift
-    reviews: { type: 'image', src: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1600&auto=format&fit=crop' }, // People portrait
     spec: { type: 'image', src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1600&auto=format&fit=crop' }, // Minimal
     dialogue: { type: 'image', src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1600&auto=format&fit=crop' } // Cafe/Talk
   };
