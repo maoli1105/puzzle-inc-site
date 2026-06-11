@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Header from '../components/Header';
+import LegalHeader from '../components/LegalHeader';
 import Footer from '../components/Footer';
 import Opening from '../components/Opening';
 import MouseStalker from '../components/MouseStalker';
@@ -13,22 +13,24 @@ interface NewsItem {
   link?: string;
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const newsData: NewsItem[] = [
   {
     id: 1,
     date: '2026.05.15',
     category: 'Product',
     title: '新商品「Piece One」登場。',
-    image: '../assets/piceone_01_bk.jpg',
-    link: '../products/piece-one/'
+    image: `${baseUrl}assets/piceone_01_bk.jpg`.replace('//', '/'),
+    link: `${baseUrl}products/piece-one/`.replace('//', '/')
   },
   {
     id: 2,
     date: '2026.05.15',
     category: 'Product',
     title: '新商品「Piece Flow」登場。',
-    image: '../assets/pieceflow_02_bp.jpg',
-    link: '../products/piece-flow/'
+    image: `${baseUrl}assets/pieceflow_02_bp.jpg`.replace('//', '/'),
+    link: `${baseUrl}products/piece-flow/`.replace('//', '/')
   }
 ];
 
@@ -78,7 +80,7 @@ const App: React.FC = () => {
           className="relative z-10 bg-white shadow-2xl pb-40"
           style={{ marginBottom: `${footerHeight}px` }}
         >
-          <Header />
+          <LegalHeader />
           
           <main className="pt-32 px-6 max-w-5xl mx-auto min-h-screen">
             <div className="mb-20 border-b border-gray-200 pb-8">
