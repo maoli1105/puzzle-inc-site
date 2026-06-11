@@ -34,7 +34,7 @@ const App: React.FC = () => {
       <Opening onComplete={() => setLoading(false)} />
       <MouseStalker />
       
-      <div className={`transition-opacity duration-1000 ease-in-out ${loading ? 'opacity-0' : 'opacity-100'} ${bgColor} ${textColor} min-h-screen selection:bg-zinc-200 selection:text-black overflow-hidden relative`}>
+      <div className={`transition-all duration-1000 ease-in-out ${loading ? 'opacity-0' : 'opacity-100'} ${bgColor} ${textColor} min-h-screen selection:bg-zinc-200 selection:text-black overflow-hidden relative`}>
         <div className="noise-overlay" />
         
         {/* Absolute Teaser Label */}
