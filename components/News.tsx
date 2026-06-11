@@ -17,14 +17,16 @@ const newsData: NewsItem[] = [
     date: '2026.05.15',
     category: 'Product',
     title: '新商品「Piece One」登場。',
-    image: 'assets/piceone_01_bk.jpg'
+    image: 'assets/piceone_01_bk.jpg',
+    link: 'products/piece-one/'
   },
   {
     id: 2,
     date: '2026.05.15',
     category: 'Product',
     title: '新商品「Piece Flow」登場。',
-    image: 'assets/pieceflow_02_bp.jpg'
+    image: 'assets/pieceflow_02_bp.jpg',
+    link: 'products/piece-flow/'
   }
 ];
 
@@ -39,6 +41,12 @@ const News: React.FC = () => {
     setCursorPos({ x: e.clientX, y: e.clientY });
   };
 
+  const handleItemClick = (link?: string) => {
+    if (link) {
+      window.location.href = link;
+    }
+  };
+
   return (
     <section 
       id="news" 
@@ -51,10 +59,10 @@ const News: React.FC = () => {
             <div>
                 <span className="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase block mb-4">Journal</span>
                 <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900">
-                    <TextReveal>Latest News</TextReveal>
+                     <TextReveal>Latest News</TextReveal>
                 </h3>
             </div>
-            <a href="#" className="hidden md:inline-block text-sm font-bold tracking-widest uppercase hover:text-blue-600 transition-colors">
+            <a href="news/" className="hidden md:inline-block text-sm font-bold tracking-widest uppercase hover:text-blue-600 transition-colors clickable">
                 View All Archives &rarr;
             </a>
         </ScrollReveal>
@@ -63,9 +71,10 @@ const News: React.FC = () => {
             {newsData.map((item, index) => (
                 <ScrollReveal key={item.id} delay={index * 100} className="w-full">
                     <div 
-                        className="group relative border-b border-gray-200 py-12 flex flex-col md:flex-row md:items-baseline transition-colors duration-300 hover:bg-white px-4 -mx-4 cursor-pointer"
+                        className="group relative border-b border-gray-200 py-12 flex flex-col md:flex-row md:items-baseline transition-colors duration-300 hover:bg-white px-4 -mx-4 cursor-pointer clickable"
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
+                        onClick={() => handleItemClick(item.link)}
                     >
                         <div className="md:w-1/4 mb-2 md:mb-0">
                             <span className="text-sm font-mono text-gray-400 block mb-1">{item.date}</span>
@@ -84,7 +93,7 @@ const News: React.FC = () => {
         </div>
         
         <div className="mt-12 md:hidden text-center">
-             <a href="#" className="text-sm font-bold tracking-widest uppercase hover:text-blue-600 transition-colors">
+             <a href="news/" className="text-sm font-bold tracking-widest uppercase hover:text-blue-600 transition-colors clickable">
                 View All Archives &rarr;
             </a>
         </div>
