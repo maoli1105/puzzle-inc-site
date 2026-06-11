@@ -1,8 +1,50 @@
-
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import ScrollReveal from './ScrollReveal';
 import TextReveal from './TextReveal';
 import ParallaxImage from './ParallaxImage';
+
+const ScrollColorImage: React.FC<{ src: string; alt: string; className?: string }> = ({ src, alt, className = "" }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [grayscale, setGrayscale] = useState(100);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      if (rect.bottom < 0 || rect.top > windowHeight) {
+        setGrayscale(100);
+        return;
+      }
+
+      const elementCenter = rect.top + rect.height / 2;
+      const viewportCenter = windowHeight / 2;
+
+      const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
+
+      const maxDistance = windowHeight * 0.45;
+      const ratio = Math.min(distanceFromCenter / maxDistance, 1);
+      
+      setGrayscale(ratio * 100);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} className="w-full h-full transition-all duration-300 ease-out" style={{ filter: `grayscale(${grayscale}%)` }}>
+      <ParallaxImage src={src} alt={alt} className={className} />
+    </div>
+  );
+};
 
 const Craftsmanship: React.FC = () => {
   return (
@@ -39,13 +81,11 @@ const Craftsmanship: React.FC = () => {
             <div className="md:col-span-1"></div>
             <div className="md:col-span-7 h-[400px] relative">
               <ScrollReveal direction='right' className="w-full h-full">
-                <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
-                    <ParallaxImage 
-                        src="./assets/piceone_x3.jpg" 
-                        alt="Zinc Alloy Texture"
-                        className="w-full h-full rounded-sm opacity-80"
-                    />
-                </div>
+                <ScrollColorImage 
+                    src="./assets/piceone_x3.jpg" 
+                    alt="Zinc Alloy Texture"
+                    className="w-full h-full rounded-sm opacity-80"
+                />
               </ScrollReveal>
             </div>
           </div>
@@ -54,13 +94,11 @@ const Craftsmanship: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center border-t border-white/10 pt-16">
             <div className="md:col-span-7 h-[400px] relative order-2 md:order-1">
                <ScrollReveal direction='left' className="w-full h-full">
-                <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
-                    <ParallaxImage 
-                        src="./assets/pieceflow_x2.jpg" 
-                        alt="Silicon Texture"
-                        className="w-full h-full rounded-sm opacity-80"
-                    />
-                </div>
+                <ScrollColorImage 
+                    src="./assets/pieceflow_x2.jpg" 
+                    alt="Silicon Texture"
+                    className="w-full h-full rounded-sm opacity-80"
+                />
               </ScrollReveal>
             </div>
             <div className="md:col-span-1 order-1 md:order-2"></div>
@@ -97,13 +135,11 @@ const Craftsmanship: React.FC = () => {
             <div className="md:col-span-1"></div>
             <div className="md:col-span-7 h-[400px] relative">
                <ScrollReveal direction='right' className="w-full h-full">
-                <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700">
-                    <ParallaxImage 
-                        src="./assets/piceone_x1.jpg" 
-                        alt="Magnetic Connection"
-                        className="w-full h-full rounded-sm opacity-80"
-                    />
-                </div>
+                <ScrollColorImage 
+                    src="./assets/piceone_x2-2.jpg" 
+                    alt="Magnetic Connection"
+                    className="w-full h-full rounded-sm opacity-80"
+                />
               </ScrollReveal>
             </div>
           </div>
