@@ -56,7 +56,7 @@ const Header: React.FC = () => {
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'} pt-4 pb-4`}>
         <div className="container mx-auto px-6 flex justify-between items-center relative">
           {/* Logo */}
-          <div className="cursor-pointer z-50 relative" onClick={() => window.location.href = '../../'}>
+          <div className="cursor-pointer z-50 relative clickable" onClick={() => window.location.href = '../../'}>
             <img 
               src={logoSrc} 
               alt="PUZZLE" 
