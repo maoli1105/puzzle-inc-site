@@ -6,6 +6,7 @@ import ParallaxImage from './ParallaxImage';
 const ScrollColorImage: React.FC<{ src: string; alt: string; className?: string }> = ({ src, alt, className = "" }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [grayscale, setGrayscale] = useState(100);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +41,13 @@ const ScrollColorImage: React.FC<{ src: string; alt: string; className?: string 
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-full transition-all duration-300 ease-out" style={{ filter: `grayscale(${grayscale}%)` }}>
+    <div 
+      ref={containerRef} 
+      className="w-full h-full transition-all duration-300 ease-out" 
+      style={{ filter: `grayscale(${isHovered ? 0 : grayscale}%)` }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <ParallaxImage src={src} alt={alt} className={className} />
     </div>
   );
