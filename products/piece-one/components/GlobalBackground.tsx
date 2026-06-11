@@ -22,13 +22,10 @@ const GlobalBackground: React.FC<GlobalBackgroundProps> = ({ activeSection }) =>
     },
     concept: { type: 'image', src: 'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1600&auto=format&fit=crop' },
     features: { type: 'image', src: 'https://images.unsplash.com/photo-1616440347437-b1c73416ef12?q=80&w=1600&auto=format&fit=crop' },
-    structure: { type: 'image', src: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop' },
     texture: { type: 'image', src: 'https://images.unsplash.com/photo-1543854589-49870b28448f?q=80&w=1600&auto=format&fit=crop' },
     gallery: { type: 'image', src: 'https://images.unsplash.com/photo-1499750310159-5254f412c2de?q=80&w=1600&auto=format&fit=crop' },
     colors: { type: 'image', src: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1600&auto=format&fit=crop' },
-    utility: { type: 'image', src: 'https://images.unsplash.com/photo-1469037784699-75dcff1cbf75?q=80&w=1600&auto=format&fit=crop' },
     match: { type: 'image', src: 'https://images.unsplash.com/photo-1512428559087-560fa5ce7d94?q=80&w=1600&auto=format&fit=crop' },
-    reviews: { type: 'image', src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop' },
     spec: { type: 'image', src: 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?q=80&w=1600&auto=format&fit=crop' },
     dialogue: { type: 'image', src: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1600&auto=format&fit=crop' }
   };

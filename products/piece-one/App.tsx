@@ -38,7 +38,7 @@ const App: React.FC = () => {
       { rootMargin: '-40% 0px -40% 0px' }
     );
 
-    const sections = ['hero', 'concept', 'features', 'structure', 'texture', 'gallery', 'colors', 'utility', 'match', 'reviews', 'spec', 'dialogue'];
+    const sections = ['hero', 'concept', 'features', 'texture', 'gallery', 'colors', 'match', 'spec', 'dialogue'];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -79,13 +79,12 @@ const App: React.FC = () => {
               <PieceHero />
               <PieceConcept />
               <PieceFeatures />
-              <PieceStructure />
               <PieceTexture />
               <PieceGallery />
               <PieceColors />
-              <PieceUtility />
               <PieceMatch />
-              <PieceReviews />
+              {/* Voices Creators' View section is hidden for future review integration */}
+              {/* <PieceReviews /> */}
               <Dialogue />
               <PieceSpec />
             </div>
