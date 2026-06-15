@@ -1,167 +1,318 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import Footer from '../../components/Footer';
-import ScrollReveal from '../piece-one/components/ScrollReveal';
-import MouseStalker from '../piece-one/components/MouseStalker';
+import MobileCTA from './components/MobileCTA';
+import GlobalBackground from './components/GlobalBackground';
+import LeftSide from './components/LeftSide';
+import Sidebar from './components/Sidebar';
 import Opening from '../piece-one/components/Opening';
+import MouseStalker from '../piece-one/components/MouseStalker';
+import ScrollReveal from '../piece-one/components/ScrollReveal';
+
+// PuzzleWork ブランドアクセント
+const AMBER = '#B46400';
+const CYAN = '#0891B2';
+const GREEN = '#059669';
+const DANGER = '#E60012';
+
+/* ── 共通パーツ ───────────────────────────────────────── */
+const Eyebrow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <h2 className="text-xs font-bold tracking-[0.35em] uppercase mb-5" style={{ color: AMBER }}>{children}</h2>
+);
+const H = ({ children }: { children: React.ReactNode }) => (
+  <h3 className="text-2xl md:text-[32px] font-bold tracking-tight text-gray-900 leading-snug">{children}</h3>
+);
+const Body: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <p className="text-[15px] leading-loose text-gray-600 font-medium mt-6">{children}</p>
+);
+// ★スクショ差し替え枠：children を <img src="../../assets/xxx.png" className="w-full rounded" /> に置き換えるだけ
+const Shot: React.FC<{ children: React.ReactNode; caption?: string }> = ({ children, caption }) => (
+  <div className="max-w-md mx-auto mt-12">
+    <div className="bg-white rounded-lg shadow-xl border border-gray-100 p-4 text-left">{children}</div>
+    {caption && <p className="text-[11px] text-gray-400 text-center mt-3 tracking-wider">{caption}</p>}
+  </div>
+);
+const PieceCard: React.FC<{ accent: string; title: React.ReactNode; meta?: string; bar?: number; dim?: boolean }> = ({ accent, title, meta, bar, dim }) => (
+  <div className="relative bg-white border border-gray-200 rounded-lg p-3 overflow-hidden" style={{ opacity: dim ? 0.55 : 1 }}>
+    <span className="absolute left-0 top-0 bottom-0 w-1" style={{ background: accent }} />
+    <div className="text-[13px] font-bold text-gray-900 flex items-center gap-2 flex-wrap">{title}</div>
+    {typeof bar === 'number' && (
+      <div className="h-[5px] bg-gray-100 rounded-full mt-2 overflow-hidden"><div className="h-full rounded-full" style={{ width: `${bar}%`, background: AMBER }} /></div>
+    )}
+    {meta && <div className="text-[11px] text-gray-400 mt-1.5">{meta}</div>}
+  </div>
+);
+const Tag: React.FC<{ bg: string; children: React.ReactNode }> = ({ bg, children }) => (
+  <span className="text-[9px] font-extrabold text-white rounded-md px-1.5 py-0.5 whitespace-nowrap" style={{ background: bg }}>{children}</span>
+);
+const Section: React.FC<{ id: string; children: React.ReactNode; tint?: boolean }> = ({ id, children, tint }) => (
+  <section id={id} className={`py-24 relative ${tint ? 'bg-white/50' : ''}`}>
+    <div className="container mx-auto px-8 relative z-10 max-w-2xl text-center">{children}</div>
+  </section>
+);
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
-  const [bgColor, setBgColor] = useState('bg-zinc-900');
-  const [textColor, setTextColor] = useState('text-zinc-100');
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-
-      // Smooth background color shift based on scroll position
-      if (scrollY > windowHeight * 0.4) {
-        setBgColor('bg-zinc-50');
-        setTextColor('text-zinc-900');
-      } else {
-        setBgColor('bg-zinc-900');
-        setTextColor('text-zinc-100');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActiveSection(e.target.id); }),
+      { rootMargin: '-40% 0px -40% 0px' }
+    );
+    ['hero', 'problem', 'flow', 'map', 'gantt', 'grow', 'decide', 'ai', 'faces', 'start'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="antialiased font-sans">
+    <div className="antialiased font-sans bg-black text-gray-900 min-h-screen">
       <Opening onComplete={() => setLoading(false)} />
       <MouseStalker />
-      
-      <div className={`transition-all duration-1000 ease-in-out ${loading ? 'opacity-0' : 'opacity-100'} ${bgColor} ${textColor} min-h-screen selection:bg-zinc-200 selection:text-black overflow-hidden relative`}>
-        <div className="noise-overlay" />
-        
-        {/* Absolute Teaser Label */}
-        <div className="absolute top-8 left-8 z-50 text-[10px] tracking-[0.3em] font-bold uppercase opacity-40">
-          Closed Beta Edition
+      <GlobalBackground activeSection={activeSection} />
+      <div className="noise-overlay" />
+
+      <div className="lg:hidden"><Header /></div>
+
+      <div className={`transition-opacity duration-1000 relative z-10 ${loading ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="lg:grid lg:grid-cols-4 min-h-screen">
+          <div className="lg:col-span-1"><LeftSide activeSection={activeSection} /></div>
+
+          <main className="lg:col-span-2 w-full relative z-10 bg-white/90 backdrop-blur-sm shadow-2xl min-h-screen">
+            <div className="pb-24 lg:pb-0">
+
+              {/* HERO ─ 価値を一行で */}
+              <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20">
+                <div className="container mx-auto px-8 text-center">
+                  <h2 className="text-xs font-bold tracking-[0.4em] uppercase mb-6" style={{ color: AMBER }}>Work that flows by itself</h2>
+                  <h1 className="text-[34px] md:text-[52px] font-bold tracking-tight text-gray-900 leading-[1.18]">
+                    仕事が、人から人へ<br />ひとりでに流れる。
+                  </h1>
+                  <p className="mt-9 text-[15px] md:text-base leading-loose text-gray-600 font-medium max-w-xl mx-auto">
+                    ピースをつなぐだけ。ひとつ終われば、次が自動で「着手できる」状態になり、<br className="hidden md:block" />
+                    次の担当者にすぐ届く。手で振らなくても、止まらないチームへ。
+                  </p>
+                  <div className="flex flex-wrap gap-3 justify-center mt-10">
+                    <a href="../../contact/" className="inline-flex items-center gap-2 font-bold text-[14px] px-7 py-3.5 rounded-full text-white transition-transform hover:scale-[1.03] clickable" style={{ background: AMBER, boxShadow: `0 14px 34px -12px ${AMBER}` }}>資料・デモを依頼する</a>
+                    <a href="#flow" className="inline-flex items-center gap-2 font-bold text-[14px] px-7 py-3.5 rounded-full bg-white text-gray-900 border border-gray-200 clickable">何ができる？</a>
+                  </div>
+                  <div className="flex flex-col items-center opacity-40 mt-14">
+                    <span className="text-[10px] tracking-widest font-bold mb-2">SCROLL</span>
+                    <div className="w-px h-12 bg-gray-400" />
+                  </div>
+                </div>
+              </section>
+
+              {/* PROBLEM ─ 痛み */}
+              <Section id="problem" tint>
+                <ScrollReveal><Eyebrow>その詰まり、心当たりは</Eyebrow><H>仕事は、人の<span style={{ color: AMBER }}>“あいだ”</span>で止まる。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>タスク管理を入れても、止まるのはいつも引き継ぎの瞬間。<br />Puzzle Work は、この“あいだ”を自動でつなぎます。</Body></ScrollReveal>
+                <div className="grid sm:grid-cols-2 gap-3 mt-12 text-left">
+                  {[
+                    '終わったのに、次の人が気づいていない',
+                    '誰が・何で詰まっているか、見えない',
+                    '負荷が偏って、特定の人だけ溢れる',
+                    '決めたことが、いつのまにか消えている',
+                  ].map((t, i) => (
+                    <ScrollReveal key={t} delay={i * 70}>
+                      <div className="bg-white border border-gray-200 rounded-xl p-4 flex items-start gap-3">
+                        <span className="text-[15px] font-bold shrink-0" style={{ color: DANGER }}>!</span>
+                        <span className="text-[13.5px] text-gray-700 font-medium leading-relaxed">{t}</span>
+                      </div>
+                    </ScrollReveal>
+                  ))}
+                </div>
+              </Section>
+
+              {/* FLOW ─ 主役: 完了が次をほどく */}
+              <Section id="flow">
+                <ScrollReveal><Eyebrow>The Conveyor — 自動ハンドオフ</Eyebrow><H>完了が、<br />次をほどく。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>
+                  ピース同士を「順番」でつなぐと、ひとつが完了した瞬間、次のピースが自動で
+                  <b style={{ color: AMBER }}>「着手できる」</b>に変わり、その担当者へ<b style={{ color: AMBER }}>すぐ通知</b>が飛びます。
+                  誰かに振り直す手間も、「終わったよ」の連絡もいらない。仕事が、リレーのように流れていきます。
+                </Body></ScrollReveal>
+                <ScrollReveal delay={200}>
+                  <Shot caption=" A が完了 → B が自動で着手可に → 担当へ即通知">
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1"><PieceCard accent={GREEN} title={<>A 商品撮影 <Tag bg={GREEN}>完了</Tag></>} meta="担当 山田" /></div>
+                      <div className="font-extrabold text-lg" style={{ color: AMBER }}>→</div>
+                      <div className="flex-1"><PieceCard accent={AMBER} title={<>B 説明文の執筆 <Tag bg={AMBER}>着手可</Tag></>} meta="担当 佐藤" /></div>
+                    </div>
+                    <div className="mt-3 flex items-center gap-2.5 bg-gray-900 text-white rounded-lg px-3 py-2.5">
+                      <span className="w-2 h-2 rounded-full" style={{ background: AMBER }} />
+                      <span className="text-[12px] font-medium">佐藤さん、「B 説明文の執筆」に着手できます</span>
+                    </div>
+                  </Shot>
+                </ScrollReveal>
+                <div className="grid sm:grid-cols-3 gap-3 mt-10 text-left">
+                  {[
+                    { h: '自動で昇格', p: '前の工程が終わると、次が自動で着手可に。' },
+                    { h: '次の人へ即通知', p: '担当者の画面にリアルタイムで届く。' },
+                    { h: 'ボールが落ちない', p: '引き継ぎの“あいだ”が消える。' },
+                  ].map(f => (
+                    <ScrollReveal key={f.h}><div className="bg-white border border-gray-200 rounded-xl p-5 h-full"><h4 className="text-[14px] font-bold">{f.h}</h4><p className="text-[12.5px] text-gray-500 mt-1.5 leading-relaxed">{f.p}</p></div></ScrollReveal>
+                  ))}
+                </div>
+              </Section>
+
+              {/* MAP ─ 負荷とボトルネック */}
+              <Section id="map" tint>
+                <ScrollReveal><Eyebrow>Map — 負荷とボトルネック</Eyebrow><H>滞りは、<br />起きる前に見える。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>つながったピースは、そのまま組織の地形になります。<br />誰に仕事が偏っているか、どこで流れが止まっているか。報告を待たず、かたちで掴めます。</Body></ScrollReveal>
+                <ScrollReveal delay={200}>
+                  <Shot caption="負荷マップ — 偏りと詰まりがひと目で">
+                    <div className="flex items-center gap-2 mb-3"><Tag bg="#0E0E10">負荷マップ</Tag><span className="text-[11px] text-gray-400">EC事業部</span></div>
+                    <div className="grid grid-cols-2 gap-2.5">
+                      <PieceCard accent={AMBER} title={<>商品撮影 <Tag bg={AMBER}>進行中</Tag></>} bar={60} meta="担当 山田 ・ 負荷高" />
+                      <PieceCard accent={GREEN} title="説明文の執筆" meta="着手可" />
+                      <PieceCard accent={DANGER} title={<>不具合の修正 <Tag bg={DANGER}>詰まり</Tag></>} meta="14日 停滞" />
+                      <PieceCard accent="#9CA3AF" title="在庫の発注" meta="ロック中" dim />
+                    </div>
+                  </Shot>
+                </ScrollReveal>
+              </Section>
+
+              {/* GANTT ─ 時間軸 */}
+              <Section id="gantt">
+                <ScrollReveal><Eyebrow>Timeline — ガント</Eyebrow><H>時間軸でも、<br />追える。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>同じピースを、ガントで時系列に。締切と前後関係がひと目でわかります。<br />スマホは横にすれば、全体を見渡せます。</Body></ScrollReveal>
+                <ScrollReveal delay={200}>
+                  <Shot caption="ガント — 締切と依存が時系列で見える">
+                    <div className="flex flex-col gap-2.5">
+                      {[
+                        { n: '商品撮影', c: GREEN, off: 0, w: 30 },
+                        { n: '説明文の執筆', c: AMBER, off: 28, w: 34 },
+                        { n: 'ページ公開', c: CYAN, off: 60, w: 22 },
+                        { n: '広告の判断', c: '#9CA3AF', off: 78, w: 20 },
+                      ].map(r => (
+                        <div key={r.n} className="flex items-center gap-3">
+                          <span className="text-[11px] text-gray-500 w-24 shrink-0 text-right">{r.n}</span>
+                          <div className="flex-1 h-3 bg-gray-100 rounded relative">
+                            <div className="absolute top-0 h-3 rounded" style={{ left: `${r.off}%`, width: `${r.w}%`, background: r.c }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </Shot>
+                </ScrollReveal>
+              </Section>
+
+              {/* GROW ─ 動く人が育つ */}
+              <Section id="grow" tint>
+                <ScrollReveal><Eyebrow>For Members — 動く人</Eyebrow><H>やらされる管理じゃない。<br />自分が、育っていく。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>メンバーは、自分のピースと今日の一歩が見える画面を持ちます。<br />手を挙げて取れるピース、伸びていくスキルの樹、歩んだ実績。<br />管理されるためでなく、成長を実感するための場所です。</Body></ScrollReveal>
+                <ScrollReveal delay={200}>
+                  <Shot caption="動く人の画面 — スキルと実績が積み上がる">
+                    <div className="text-[11px] text-gray-400 font-bold mb-3">スキルの樹</div>
+                    <div className="flex flex-col gap-2">
+                      {[
+                        { s: '商品撮影', lv: 80 }, { s: 'コピーライティング', lv: 55 }, { s: '広告運用', lv: 35 },
+                      ].map(k => (
+                        <div key={k.s} className="flex items-center gap-3">
+                          <span className="text-[12px] text-gray-600 w-28 shrink-0">{k.s}</span>
+                          <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden"><div className="h-full rounded-full" style={{ width: `${k.lv}%`, background: AMBER }} /></div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 mt-4">
+                      <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-center"><div className="text-[18px] font-bold text-gray-900">128</div><div className="text-[10px] text-gray-400">完了したピース</div></div>
+                      <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-center"><div className="text-[18px] font-bold" style={{ color: AMBER }}>9</div><div className="text-[10px] text-gray-400">育ったスキル</div></div>
+                    </div>
+                  </Shot>
+                </ScrollReveal>
+              </Section>
+
+              {/* DECIDE ─ 判断（会議は支えに） */}
+              <Section id="decide">
+                <ScrollReveal><Eyebrow>Judgment — 判断を未来へ</Eyebrow><H>決めたことは、<br />消えない。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>終わらない運用も「判断」として残せます。会議は議事録ではなく働くセッションになり、<br />決断は台帳に積もり、見直す日が来たら赤く浮かんで、もう一度戻ってくる。<br />「なぜそう決めたか、誰も知らない」を、なくします。</Body></ScrollReveal>
+                <ScrollReveal delay={200}>
+                  <Shot caption="決断台帳 — 見直しどきの決断は赤く浮かぶ">
+                    <div className="flex flex-col gap-2.5">
+                      <div className="bg-white border border-gray-200 rounded-lg p-3">
+                        <div className="text-[13px] font-bold text-gray-900 flex items-center justify-between gap-2"><span>広告予算を上げるか</span><Tag bg={DANGER}>見直しどき</Tag></div>
+                        <div className="text-[11px] text-gray-400 mt-1.5">据え置き。来週あらためて評価する</div>
+                      </div>
+                      <div className="bg-white border border-gray-200 rounded-lg p-3">
+                        <div className="text-[13px] font-bold text-gray-900 flex items-center justify-between gap-2"><span>新パッケージの採用</span><Tag bg={CYAN}>見直し 7/20</Tag></div>
+                        <div className="text-[11px] text-gray-400 mt-1.5">返品率を下げる見込み</div>
+                      </div>
+                    </div>
+                  </Shot>
+                </ScrollReveal>
+              </Section>
+
+              {/* AI ─ 二重入力ゼロ */}
+              <Section id="ai" tint>
+                <ScrollReveal><Eyebrow>Zero double-entry</Eyebrow><H>会議メモは、<br />貼るだけ。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>Google MeetやGPT・Claudeの要約をそのまま貼ると、議題・決定・宿題に自動で分かれます。<br />宿題は担当者まで結びついて、そのまま“流れる仕事”に乗ります。議事録の書き写しは、ゼロに。</Body></ScrollReveal>
+                <ScrollReveal delay={200}>
+                  <Shot caption="貼る → 議題・決定・宿題に自動で分かれる">
+                    <div className="flex gap-3 items-stretch">
+                      <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-3 text-[10.5px] text-gray-400 leading-relaxed">広告のROASが悪化。<br />結論：来週まで様子見<br />宿題：山田が語句を確認</div>
+                      <div className="flex items-center font-extrabold" style={{ color: AMBER }}>→</div>
+                      <div className="flex-1 flex flex-col gap-2">
+                        <PieceCard accent={CYAN} title={<><Tag bg={CYAN}>決断</Tag>来週まで様子見</>} />
+                        <PieceCard accent={AMBER} title={<><Tag bg={AMBER}>ピース化</Tag>語句の確認</>} meta="担当 山田" />
+                      </div>
+                    </div>
+                  </Shot>
+                </ScrollReveal>
+              </Section>
+
+              {/* FACES ─ 二つの眼 */}
+              <Section id="faces">
+                <ScrollReveal><Eyebrow>Two Eyes</Eyebrow><H>導く人と、動く人。<br />ひとつの仕事を二つの眼で。</H></ScrollReveal>
+                <div className="grid md:grid-cols-2 gap-5 mt-12 text-left">
+                  <ScrollReveal delay={120}>
+                    <div className="bg-white border border-gray-200 rounded-xl p-6 h-full">
+                      <div className="w-10 h-1 rounded-full mb-4" style={{ background: AMBER }} />
+                      <h3 className="text-[17px] font-bold">導く人の眼<span className="text-[11px] font-medium text-gray-400 ml-2">マネジメント</span></h3>
+                      <p className="text-[12.5px] text-gray-500 mt-2 leading-relaxed">全体を俯瞰し、流れをつくり、判断を残す人へ。</p>
+                      <ul className="mt-4 space-y-2">
+                        {['全体マップ・負荷・ボトルネック', 'ガントで締切と前後関係', '会議室と、決めるべき議題', '決断台帳と、自動共有'].map(t => (
+                          <li key={t} className="flex gap-2.5 items-start text-[12.5px] text-gray-600"><span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: AMBER }} />{t}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </ScrollReveal>
+                  <ScrollReveal delay={220}>
+                    <div className="bg-white border border-gray-200 rounded-xl p-6 h-full">
+                      <div className="w-10 h-1 rounded-full mb-4" style={{ background: CYAN }} />
+                      <h3 className="text-[17px] font-bold">動く人の手<span className="text-[11px] font-medium text-gray-400 ml-2">メンバー</span></h3>
+                      <p className="text-[12.5px] text-gray-500 mt-2 leading-relaxed">一片を担い、手を動かし、自分の歩みを残す人へ。</p>
+                      <ul className="mt-4 space-y-2">
+                        {['自分のピースと、今日の一歩', '手を挙げて取れるピース', '作業時間と、進みの記録', 'スキルの樹と、歩んだ実績'].map(t => (
+                          <li key={t} className="flex gap-2.5 items-start text-[12.5px] text-gray-600"><span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style={{ background: CYAN }} />{t}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </ScrollReveal>
+                </div>
+              </Section>
+
+              {/* START ─ 導入 */}
+              <Section id="start" tint>
+                <ScrollReveal><Eyebrow>Get Started</Eyebrow><H>明日から、<br />流れを変える。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>多部署をまたぐ引き継ぎ、終わらない運用、属人化した判断。<br />そのどれかに心当たりがあるチームなら、Puzzle Work は効きます。</Body></ScrollReveal>
+                <ScrollReveal delay={200}>
+                  <div className="flex flex-wrap gap-3 justify-center mt-10">
+                    <a href="../../contact/" className="inline-flex items-center gap-2 font-bold text-[15px] px-8 py-4 rounded-full text-white transition-transform hover:scale-[1.03] clickable" style={{ background: AMBER, boxShadow: `0 16px 38px -12px ${AMBER}` }}>資料・デモを依頼する</a>
+                  </div>
+                  <p className="text-[12px] text-gray-400 mt-6 tracking-wider">株式会社パズルが、自社の現場で鍛えながら育てています。現在クローズドベータ。</p>
+                </ScrollReveal>
+              </Section>
+
+            </div>
+          </main>
+
+          <div className="lg:col-span-1"><Sidebar activeSection={activeSection} /></div>
         </div>
 
-        <Header />
-
-        <main className="container mx-auto px-6 max-w-4xl relative z-10">
-          {/* Section 1: Hero */}
-          <section id="hero" className="min-h-screen flex flex-col justify-center py-20">
-            <ScrollReveal delay={200} className="space-y-12">
-              <h1 className="text-4xl md:text-6xl font-light tracking-wide leading-tight font-sans">
-                人の歩みを、<br className="md:hidden" />未来へ渡す。
-              </h1>
-              <p className="text-xl md:text-2xl font-extralight tracking-widest text-zinc-400">
-                Puzzle Work
-              </p>
-            </ScrollReveal>
-          </section>
-
-          {/* Section 2: Connection */}
-          <section id="concept" className="min-h-screen flex flex-col justify-center py-20 border-t border-zinc-800/20">
-            <ScrollReveal className="space-y-16">
-              <h2 className="text-sm font-bold tracking-[0.3em] text-zinc-400 uppercase">Connection</h2>
-              <div className="space-y-10">
-                <h3 className="text-3xl md:text-5xl font-light tracking-wide leading-relaxed">
-                  失われていた接続を、もう一度。
-                </h3>
-                <p className="text-lg md:text-xl font-light leading-loose text-zinc-500 max-w-2xl">
-                  物理的な接続を取り戻すために、Piece One を作りました。<br />
-                  人の歩みを未来へ繋ぐために、Puzzle Work を作ります。
-                </p>
-                <div className="pt-8 space-y-4 font-mono text-sm tracking-widest text-zinc-400 border-t border-zinc-800/10">
-                  <p>Piece One は、今を繋ぐ。</p>
-                  <p>Puzzle Work は、人の歩みを、未来へ渡す。</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </section>
-
-          {/* Section 3: Individual (Selfishness) */}
-          <section id="features" className="min-h-screen flex flex-col justify-center py-20 border-t border-zinc-800/20">
-            <ScrollReveal className="space-y-12">
-              <h2 className="text-sm font-bold tracking-[0.3em] text-zinc-400 uppercase">Selfishness</h2>
-              <div className="space-y-8">
-                <h3 className="text-3xl md:text-4xl font-light tracking-wide">
-                  自分のために、残す。
-                </h3>
-                <p className="text-base md:text-lg font-light leading-loose text-zinc-500 max-w-xl">
-                  誰かに管理されるための記録ではなく、<br />
-                  自分が歩んだ軌跡を、自分のための資産として手元に残す。<br /><br />
-                  その純粋な利己の動機から、すべての接続は始まります。
-                </p>
-              </div>
-            </ScrollReveal>
-          </section>
-
-          {/* Section 4: Why Piece (Interaction) */}
-          <section id="colors" className="min-h-screen flex flex-col justify-center py-20 border-t border-zinc-800/20">
-            <ScrollReveal className="space-y-12">
-              <h2 className="text-sm font-bold tracking-[0.3em] text-zinc-400 uppercase">The Piece</h2>
-              <div className="space-y-8">
-                <h3 className="text-3xl md:text-4xl font-light tracking-wide">
-                  一つの仕事だけでは、価値にならない。
-                </h3>
-                <p className="text-base md:text-lg font-light leading-loose text-zinc-500 max-w-xl">
-                  誰かの歩みと繋がった瞬間、仕事は初めて意味を持ちます。<br /><br />
-                  他者と、そして未来と噛み合うための接合点。<br />
-                  それが、私たちが「ピース」と呼ぶ理由です。
-                </p>
-              </div>
-            </ScrollReveal>
-          </section>
-
-          {/* Section 5: Beautiful Byproduct (利他) */}
-          <section id="spec" className="min-h-screen flex flex-col justify-center py-20 border-t border-zinc-800/20">
-            <ScrollReveal className="space-y-12">
-              <h2 className="text-sm font-bold tracking-[0.3em] text-zinc-400 uppercase">Byproduct</h2>
-              <div className="space-y-8">
-                <h3 className="text-3xl md:text-4xl font-light tracking-wide">
-                  組織の記憶は、ただの副産物です。
-                </h3>
-                <p className="text-base md:text-lg font-light leading-loose text-zinc-500 max-w-xl">
-                  あなたが残した迷いは、未来の誰かを救うかもしれない。<br /><br />
-                  一人ひとりが自分のために残したピースが、結果として、組織の美しい記憶の地層になる。<br /><br />
-                  誰かが歩んだ道を、なかったことにしたくないから。
-                </p>
-              </div>
-            </ScrollReveal>
-          </section>
-
-          {/* Section 6: Partnership */}
-          <section className="min-h-[80vh] flex flex-col justify-center py-20 border-t border-zinc-800/20">
-            <ScrollReveal className="space-y-12">
-              <h2 className="text-sm font-bold tracking-[0.3em] text-zinc-400 uppercase">Partnership</h2>
-              <div className="space-y-8">
-                <h3 className="text-2xl md:text-3xl font-light tracking-wide text-zinc-400">
-                  Puzzle Work β
-                </h3>
-                <p className="text-base md:text-lg font-light leading-loose text-zinc-500 max-w-xl">
-                  現在、限られたパートナーとともに、Puzzle Workを大切に育てています。<br /><br />
-                  私たちが探しているのは、顧客ではありません。<br />
-                  未来の働き方というパズルを、共に完成させる仲間です。
-                </p>
-              </div>
-            </ScrollReveal>
-          </section>
-
-          {/* Section 7: Epilogue */}
-          <section className="min-h-screen flex flex-col justify-center py-20 border-t border-zinc-800/20">
-            <ScrollReveal className="space-y-12 text-center md:text-left">
-              <h3 className="text-3xl md:text-5xl font-light tracking-wide leading-relaxed">
-                人の歩みを、未来へ渡す。
-              </h3>
-              <p className="text-lg md:text-xl font-light leading-loose text-zinc-400">
-                私たちは、その接続を取り戻したい。
-              </p>
-              <div className="pt-12 text-2xl font-bold tracking-widest uppercase text-zinc-500">
-                Puzzle Work
-              </div>
-            </ScrollReveal>
-          </section>
-        </main>
-
-        <Footer />
+        {/* Mobile fixed CTA */}
+        <MobileCTA />
       </div>
     </div>
   );
