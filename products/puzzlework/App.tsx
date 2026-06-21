@@ -133,19 +133,38 @@ const Shot: React.FC<{ children: React.ReactNode; caption?: string }> = ({ child
 );
 const ScreenShot: React.FC<{ src: string; alt: string; caption?: string }> = ({ src, alt, caption }) => {
   const imgRef = React.useRef<HTMLImageElement>(null);
+  const wrapRef = React.useRef<HTMLDivElement>(null);
+  const [zoomed, setZoomed] = React.useState(false);
+  const origin = React.useRef({ x: 50, y: 50 });
   const base = import.meta.env.BASE_URL;
   const resolved = src.startsWith('/') ? base + src.slice(1) : src;
+  const applyOrigin = () => { if (imgRef.current) imgRef.current.style.transformOrigin = `${origin.current.x}% ${origin.current.y}%`; };
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    if (imgRef.current) imgRef.current.style.transformOrigin = `${x}% ${y}%`;
+    origin.current = { x: ((e.clientX - rect.left) / rect.width) * 100, y: ((e.clientY - rect.top) / rect.height) * 100 };
+    applyOrigin();
   };
-  const onLeave = () => { if (imgRef.current) imgRef.current.style.transformOrigin = '50% 50%'; };
+  const onLeave = () => { origin.current = { x: 50, y: 50 }; applyOrigin(); };
+  const onTap = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length > 1) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const t = e.touches[0];
+    origin.current = { x: ((t.clientX - rect.left) / rect.width) * 100, y: ((t.clientY - rect.top) / rect.height) * 100 };
+    applyOrigin();
+    setZoomed(z => !z);
+  };
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!zoomed || e.touches.length > 1) return;
+    e.preventDefault();
+    const rect = e.currentTarget.getBoundingClientRect();
+    const t = e.touches[0];
+    origin.current = { x: ((t.clientX - rect.left) / rect.width) * 100, y: ((t.clientY - rect.top) / rect.height) * 100 };
+    applyOrigin();
+  };
   return (
     <div className="max-w-md mx-auto mt-12">
-      <div className="rounded-lg shadow-xl border border-white/10 overflow-hidden cursor-zoom-in" onMouseMove={onMove} onMouseLeave={onLeave}>
-        <img ref={imgRef} src={resolved} alt={alt} className="w-full h-auto block transition-transform duration-300 ease-out hover:scale-[2.2]" style={{ transformOrigin: '50% 50%' }} />
+      <div ref={wrapRef} className="rounded-lg shadow-xl border border-white/10 overflow-hidden cursor-zoom-in" onMouseMove={onMove} onMouseLeave={onLeave} onTouchStart={onTap} onTouchMove={onTouchMove}>
+        <img ref={imgRef} src={resolved} alt={alt} className={`w-full h-auto block transition-transform duration-300 ease-out hover:scale-[2.2] ${zoomed ? 'scale-[2.2]' : ''}`} style={{ transformOrigin: '50% 50%' }} />
       </div>
       {caption && <p className="text-[11px] text-gray-400 text-center mt-3 tracking-wider">{caption}</p>}
     </div>
