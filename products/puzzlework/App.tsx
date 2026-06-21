@@ -26,7 +26,7 @@ const DIAGNOSIS_PROMPT = `あなたは辛口の業務改善コンサルタント
 → まず当てはまるか判定し、当てはまるなら正直にそう述べてください。
 
 # 評価軸（価値の中心）
-Puzzle Work の価値の中心は、会議でもAI要約でもありません。中心は「仕事が人から人へ自動で流れること」（完了→次が動く→止まった場所が勝手に見える）。この一点だけで導入価値があるかを評価してください。会議・決断台帳・AI要約・スキル育成は“加点要素”にすぎません。
+Puzzle Work の価値の中心は、会議でもAI要約でもありません。中心は「仕事が人から人へ自動で流れること」（完了→次が動く→止まった場所が勝手に見える）。この一点だけで導入価値があるかを評価してください。会議・決断台帳・AI要約・スキル育成は"加点要素"にすぎません。
 
 # 当社の状況（記入してください）
 - 利用中のツール：（例：Slack / Google Meet / スプレッドシート / Notion など）
@@ -53,7 +53,7 @@ Puzzle Work の価値の中心は、会議でもAI要約でもありません。
 
 ## 中核の仕組み：自動ハンドオフ
 - すべての仕事を「ピース」という単位に統一し、依存関係（順番）でつなぐ。つなぐと組織全体が1枚のマップ（地形）になる。
-- 例：撮影→説明文→公開→広告 とつなぐと、「撮影」が完了した瞬間、「説明文」が自動で“着手可”に変わり、その担当者へ即通知が飛ぶ。「終わったよ」の連絡も、誰かに振り直す手間も不要。
+- 例：撮影→説明文→公開→広告 とつなぐと、「撮影」が完了した瞬間、「説明文」が自動で"着手可"に変わり、その担当者へ即通知が飛ぶ。「終わったよ」の連絡も、誰かに振り直す手間も不要。
 - Asana等は誰かが手で更新しないと進捗が腐るが、Puzzle Workは「完了が次を動かす」ため、進捗・地図が常に最新に保たれる。
 
 ## 見える化
@@ -69,7 +69,7 @@ Puzzle Work の価値の中心は、会議でもAI要約でもありません。
 ## 会議・意思決定（補助機能）
 - 会議は議題を一つずつ歩き、必ず成果（決定／ピース化／メモ／保留）を残す。話して終わりにしない。
 - 会議のAI要約（Google Meet等）を貼ると、議題・決定・宿題に自動分解。宿題は担当付きの実ピースになり、上記の流れに乗る（議事録の書き写しゼロ）。
-- 決定は「決断台帳」に積もり、見直し期限が来ると赤く浮かんで会議に戻る（“なぜそう決めたか誰も知らない”をなくす）。
+- 決定は「決断台帳」に積もり、見直し期限が来ると赤く浮かんで会議に戻る（"なぜそう決めたか誰も知らない"をなくす）。
 
 ## 2つの画面
 - 管理者（導く人）：全体マップ・負荷・ボトルネック・ガント・会議・決断台帳・自動共有。
@@ -125,13 +125,30 @@ const H = ({ children }: { children: React.ReactNode }) => (
 const Body: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <p className="text-[15px] leading-loose text-gray-600 font-medium mt-6">{children}</p>
 );
-// ★スクショ差し替え枠：children を <img src="../../assets/xxx.png" className="w-full rounded" /> に置き換えるだけ
 const Shot: React.FC<{ children: React.ReactNode; caption?: string }> = ({ children, caption }) => (
   <div className="max-w-md mx-auto mt-12">
     <div className="bg-white rounded-lg shadow-xl border border-gray-100 p-4 text-left">{children}</div>
     {caption && <p className="text-[11px] text-gray-400 text-center mt-3 tracking-wider">{caption}</p>}
   </div>
 );
+const ScreenShot: React.FC<{ src: string; alt: string; caption?: string }> = ({ src, alt, caption }) => {
+  const imgRef = React.useRef<HTMLImageElement>(null);
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    if (imgRef.current) imgRef.current.style.transformOrigin = `${x}% ${y}%`;
+  };
+  const onLeave = () => { if (imgRef.current) imgRef.current.style.transformOrigin = '50% 50%'; };
+  return (
+    <div className="max-w-md mx-auto mt-12">
+      <div className="rounded-lg shadow-xl border border-white/10 overflow-hidden cursor-zoom-in" onMouseMove={onMove} onMouseLeave={onLeave}>
+        <img ref={imgRef} src={src} alt={alt} className="w-full h-auto block transition-transform duration-300 ease-out hover:scale-[2.2]" style={{ transformOrigin: '50% 50%' }} />
+      </div>
+      {caption && <p className="text-[11px] text-gray-400 text-center mt-3 tracking-wider">{caption}</p>}
+    </div>
+  );
+};
 const PieceCard: React.FC<{ accent: string; title: React.ReactNode; meta?: string; bar?: number; dim?: boolean }> = ({ accent, title, meta, bar, dim }) => (
   <div className="relative bg-white border border-gray-200 rounded-lg p-3 overflow-hidden" style={{ opacity: dim ? 0.55 : 1 }}>
     <span className="absolute left-0 top-0 bottom-0 w-1" style={{ background: accent }} />
@@ -160,7 +177,7 @@ const App: React.FC = () => {
       (entries) => entries.forEach((e) => { if (e.isIntersecting) setActiveSection(e.target.id); }),
       { rootMargin: '-40% 0px -40% 0px' }
     );
-    ['hero', 'problem', 'flow', 'map', 'gantt', 'grow', 'decide', 'ai', 'faces', 'diagnose', 'start'].forEach((id) => {
+    ['hero', 'problem', 'flow', 'map', 'gantt', 'grow', 'decide', 'ai', 'faces', 'screens', 'diagnose', 'start'].forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -208,8 +225,8 @@ const App: React.FC = () => {
 
               {/* PROBLEM ─ 痛み */}
               <Section id="problem" tint>
-                <ScrollReveal><Eyebrow>その詰まり、心当たりは</Eyebrow><H>仕事は、人の<span style={{ color: AMBER }}>“あいだ”</span>で止まる。</H></ScrollReveal>
-                <ScrollReveal delay={100}><Body>タスク管理を入れても、止まるのはいつも引き継ぎの瞬間。<br />Puzzle Work は、この“あいだ”を自動でつなぎます。</Body></ScrollReveal>
+                <ScrollReveal><Eyebrow>その詰まり、心当たりは</Eyebrow><H>仕事は、人の<span style={{ color: AMBER }}>"あいだ"</span>で止まる。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>タスク管理を入れても、止まるのはいつも引き継ぎの瞬間。<br />Puzzle Work は、この"あいだ"を自動でつなぎます。</Body></ScrollReveal>
                 <div className="grid sm:grid-cols-2 gap-3 mt-12 text-left">
                   {[
                     '終わったのに、次の人が気づいていない',
@@ -236,23 +253,13 @@ const App: React.FC = () => {
                   誰かに振り直す手間も、「終わったよ」の連絡もいらない。仕事が、リレーのように流れていきます。
                 </Body></ScrollReveal>
                 <ScrollReveal delay={200}>
-                  <Shot caption=" A が完了 → B が自動で着手可に → 担当へ即通知">
-                    <div className="flex items-center gap-3">
-                      <div className="flex-1"><PieceCard accent={GREEN} title={<>A 商品撮影 <Tag bg={GREEN}>完了</Tag></>} meta="担当 山田" /></div>
-                      <div className="font-extrabold text-lg" style={{ color: AMBER }}>→</div>
-                      <div className="flex-1"><PieceCard accent={AMBER} title={<>B 説明文の執筆 <Tag bg={AMBER}>着手可</Tag></>} meta="担当 佐藤" /></div>
-                    </div>
-                    <div className="mt-3 flex items-center gap-2.5 bg-gray-900 text-white rounded-lg px-3 py-2.5">
-                      <span className="w-2 h-2 rounded-full" style={{ background: AMBER }} />
-                      <span className="text-[12px] font-medium">佐藤さん、「B 説明文の執筆」に着手できます</span>
-                    </div>
-                  </Shot>
+                  <ScreenShot src="/assets/puzzlework/02_map_folder_open.png" alt="マップ - フォルダ展開" caption="フォルダを開くと、ピースが接続線でつながっている" />
                 </ScrollReveal>
                 <div className="grid sm:grid-cols-3 gap-3 mt-10 text-left">
                   {[
                     { h: '自動で昇格', p: '前の工程が終わると、次が自動で着手可に。' },
                     { h: '次の人へ即通知', p: '担当者の画面にリアルタイムで届く。' },
-                    { h: 'ボールが落ちない', p: '引き継ぎの“あいだ”が消える。' },
+                    { h: 'ボールが落ちない', p: '引き継ぎの"あいだ"が消える。' },
                   ].map(f => (
                     <ScrollReveal key={f.h}><div className="bg-white border border-gray-200 rounded-xl p-5 h-full"><h4 className="text-[14px] font-bold">{f.h}</h4><p className="text-[12.5px] text-gray-500 mt-1.5 leading-relaxed">{f.p}</p></div></ScrollReveal>
                   ))}
@@ -264,15 +271,7 @@ const App: React.FC = () => {
                 <ScrollReveal><Eyebrow>Map — 負荷とボトルネック</Eyebrow><H>滞りは、<br />起きる前に見える。</H></ScrollReveal>
                 <ScrollReveal delay={100}><Body>つながったピースは、そのまま組織の地形になります。<br />誰に仕事が偏っているか、どこで流れが止まっているか。報告を待たず、かたちで掴めます。</Body></ScrollReveal>
                 <ScrollReveal delay={200}>
-                  <Shot caption="負荷マップ — 偏りと詰まりがひと目で">
-                    <div className="flex items-center gap-2 mb-3"><Tag bg="#0E0E10">負荷マップ</Tag><span className="text-[11px] text-gray-400">EC事業部</span></div>
-                    <div className="grid grid-cols-2 gap-2.5">
-                      <PieceCard accent={AMBER} title={<>商品撮影 <Tag bg={AMBER}>進行中</Tag></>} bar={60} meta="担当 山田 ・ 負荷高" />
-                      <PieceCard accent={GREEN} title="説明文の執筆" meta="着手可" />
-                      <PieceCard accent={DANGER} title={<>不具合の修正 <Tag bg={DANGER}>詰まり</Tag></>} meta="14日 停滞" />
-                      <PieceCard accent="#9CA3AF" title="在庫の発注" meta="ロック中" dim />
-                    </div>
-                  </Shot>
+                  <ScreenShot src="/assets/puzzlework/01_map_overview.png" alt="マップ全体" caption="マップ — フォルダごとに仕事の全体像が見える" />
                 </ScrollReveal>
               </Section>
 
@@ -281,23 +280,7 @@ const App: React.FC = () => {
                 <ScrollReveal><Eyebrow>Timeline — ガント</Eyebrow><H>時間軸でも、<br />追える。</H></ScrollReveal>
                 <ScrollReveal delay={100}><Body>同じピースを、ガントで時系列に。締切と前後関係がひと目でわかります。<br />スマホは横にすれば、全体を見渡せます。</Body></ScrollReveal>
                 <ScrollReveal delay={200}>
-                  <Shot caption="ガント — 締切と依存が時系列で見える">
-                    <div className="flex flex-col gap-2.5">
-                      {[
-                        { n: '商品撮影', c: GREEN, off: 0, w: 30 },
-                        { n: '説明文の執筆', c: AMBER, off: 28, w: 34 },
-                        { n: 'ページ公開', c: CYAN, off: 60, w: 22 },
-                        { n: '広告の判断', c: '#9CA3AF', off: 78, w: 20 },
-                      ].map(r => (
-                        <div key={r.n} className="flex items-center gap-3">
-                          <span className="text-[11px] text-gray-500 w-24 shrink-0 text-right">{r.n}</span>
-                          <div className="flex-1 h-3 bg-gray-100 rounded relative">
-                            <div className="absolute top-0 h-3 rounded" style={{ left: `${r.off}%`, width: `${r.w}%`, background: r.c }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </Shot>
+                  <ScreenShot src="/assets/puzzlework/03_gantt.png" alt="ガントチャート" caption="ガント — 締切と前後関係がひと目でわかる" />
                 </ScrollReveal>
               </Section>
 
@@ -306,23 +289,10 @@ const App: React.FC = () => {
                 <ScrollReveal><Eyebrow>For Members — 動く人</Eyebrow><H>やらされる管理じゃない。<br />自分が、育っていく。</H></ScrollReveal>
                 <ScrollReveal delay={100}><Body>メンバーは、自分のピースと今日の一歩が見える画面を持ちます。<br />手を挙げて取れるピース、伸びていくスキルの樹、歩んだ実績。<br />管理されるためでなく、成長を実感するための場所です。</Body></ScrollReveal>
                 <ScrollReveal delay={200}>
-                  <Shot caption="動く人の画面 — スキルと実績が積み上がる">
-                    <div className="text-[11px] text-gray-400 font-bold mb-3">スキルの樹</div>
-                    <div className="flex flex-col gap-2">
-                      {[
-                        { s: '商品撮影', lv: 80 }, { s: 'コピーライティング', lv: 55 }, { s: '広告運用', lv: 35 },
-                      ].map(k => (
-                        <div key={k.s} className="flex items-center gap-3">
-                          <span className="text-[12px] text-gray-600 w-28 shrink-0">{k.s}</span>
-                          <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden"><div className="h-full rounded-full" style={{ width: `${k.lv}%`, background: AMBER }} /></div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex gap-2 mt-4">
-                      <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-center"><div className="text-[18px] font-bold text-gray-900">128</div><div className="text-[10px] text-gray-400">完了したピース</div></div>
-                      <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-center"><div className="text-[18px] font-bold" style={{ color: AMBER }}>9</div><div className="text-[10px] text-gray-400">育ったスキル</div></div>
-                    </div>
-                  </Shot>
+                  <div className="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto mt-12">
+                    <ScreenShot src="/assets/puzzlework/06_skill_tree.png" alt="スキルツリー" caption="スキルツリー — 完成ピースで証明されたスキル" />
+                    <ScreenShot src="/assets/puzzlework/07_portfolio.png" alt="ポートフォリオ" caption="ポートフォリオ — 歩んだ実績の一覧" />
+                  </div>
                 </ScrollReveal>
               </Section>
 
@@ -331,36 +301,53 @@ const App: React.FC = () => {
                 <ScrollReveal><Eyebrow>Judgment — 判断を未来へ</Eyebrow><H>決めたことは、<br />消えない。</H></ScrollReveal>
                 <ScrollReveal delay={100}><Body>終わらない運用も「判断」として残せます。会議は議事録ではなく働くセッションになり、<br />決断は台帳に積もり、見直す日が来たら赤く浮かんで、もう一度戻ってくる。<br />「なぜそう決めたか、誰も知らない」を、なくします。</Body></ScrollReveal>
                 <ScrollReveal delay={200}>
-                  <Shot caption="決断台帳 — 見直しどきの決断は赤く浮かぶ">
-                    <div className="flex flex-col gap-2.5">
-                      <div className="bg-white border border-gray-200 rounded-lg p-3">
-                        <div className="text-[13px] font-bold text-gray-900 flex items-center justify-between gap-2"><span>広告予算を上げるか</span><Tag bg={DANGER}>見直しどき</Tag></div>
-                        <div className="text-[11px] text-gray-400 mt-1.5">据え置き。来週あらためて評価する</div>
-                      </div>
-                      <div className="bg-white border border-gray-200 rounded-lg p-3">
-                        <div className="text-[13px] font-bold text-gray-900 flex items-center justify-between gap-2"><span>新パッケージの採用</span><Tag bg={CYAN}>見直し 7/20</Tag></div>
-                        <div className="text-[11px] text-gray-400 mt-1.5">返品率を下げる見込み</div>
-                      </div>
-                    </div>
-                  </Shot>
+                  <ScreenShot src="/assets/puzzlework/08_meetings.png" alt="会議" caption="会議室 — 議題ごとに合意を残し、判断を積み上げる" />
                 </ScrollReveal>
               </Section>
 
               {/* AI ─ 二重入力ゼロ */}
               <Section id="ai" tint>
                 <ScrollReveal><Eyebrow>Zero double-entry</Eyebrow><H>会議メモは、<br />貼るだけ。</H></ScrollReveal>
-                <ScrollReveal delay={100}><Body>Google MeetやGPT・Claudeの要約をそのまま貼ると、議題・決定・宿題に自動で分かれます。<br />宿題は担当者まで結びついて、そのまま“流れる仕事”に乗ります。議事録の書き写しは、ゼロに。</Body></ScrollReveal>
+                <ScrollReveal delay={100}><Body>Google MeetやGPT・Claudeの要約をそのまま貼ると、議題・決定・宿題に自動で分かれます。<br />宿題は担当者まで結びついて、そのまま"流れる仕事"に乗ります。議事録の書き写しは、ゼロに。</Body></ScrollReveal>
                 <ScrollReveal delay={200}>
-                  <Shot caption="貼る → 議題・決定・宿題に自動で分かれる">
-                    <div className="flex gap-3 items-stretch">
-                      <div className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-3 text-[10.5px] text-gray-400 leading-relaxed">広告のROASが悪化。<br />結論：来週まで様子見<br />宿題：山田が語句を確認</div>
-                      <div className="flex items-center font-extrabold" style={{ color: AMBER }}>→</div>
-                      <div className="flex-1 flex flex-col gap-2">
-                        <PieceCard accent={CYAN} title={<><Tag bg={CYAN}>決断</Tag>来週まで様子見</>} />
-                        <PieceCard accent={AMBER} title={<><Tag bg={AMBER}>ピース化</Tag>語句の確認</>} meta="担当 山田" />
+                  <div className="max-w-lg mx-auto mt-12">
+                    {/* 貼り付けエリア */}
+                    <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl p-5 text-left">
+                      <p className="text-[11px] font-bold text-gray-400 tracking-wider mb-3">PASTE</p>
+                      <p className="text-[13px] text-gray-500 leading-relaxed">
+                        夏コレクション定例 2024/06/20<br />
+                        参加者: 毛利、佐藤、田中、山本<br /><br />
+                        1. 新商品の撮影スケジュール → 6/28までに完了（担当: 佐藤）<br />
+                        2. LP公開日を7/5に決定<br />
+                        3. 広告予算は前回比120%で承認<br />
+                        4. インフルエンサー候補リスト → 来週月曜までに提出（担当: 田中）
+                      </p>
+                    </div>
+                    {/* 矢印 */}
+                    <div className="flex justify-center my-4">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: AMBER }}>
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M3 8l4 4 4-4" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       </div>
                     </div>
-                  </Shot>
+                    {/* 自動分解結果 */}
+                    <div className="bg-white border border-gray-200 rounded-xl p-5 text-left space-y-4">
+                      <div>
+                        <p className="text-[10px] font-bold tracking-widest mb-2" style={{ color: AMBER }}>DECISIONS</p>
+                        <div className="space-y-1.5">
+                          <div className="flex items-start gap-2 text-[13px]"><span className="mt-0.5 w-4 h-4 rounded flex-shrink-0 flex items-center justify-center text-[9px] text-white font-bold" style={{ background: AMBER }}>D</span><span className="text-gray-700">LP公開日を<strong>7/5</strong>に決定</span></div>
+                          <div className="flex items-start gap-2 text-[13px]"><span className="mt-0.5 w-4 h-4 rounded flex-shrink-0 flex items-center justify-center text-[9px] text-white font-bold" style={{ background: AMBER }}>D</span><span className="text-gray-700">広告予算は前回比<strong>120%</strong>で承認</span></div>
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold tracking-widest mb-2" style={{ color: DANGER }}>PIECES</p>
+                        <div className="space-y-1.5">
+                          <div className="flex items-center gap-2 text-[13px]"><span className="mt-0.5 w-4 h-4 rounded flex-shrink-0 flex items-center justify-center text-[9px] text-white font-bold" style={{ background: DANGER }}>P</span><span className="text-gray-700">新商品の撮影スケジュール完了</span><span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 font-bold ml-auto">佐藤</span><span className="text-[10px] text-gray-400">6/28</span></div>
+                          <div className="flex items-center gap-2 text-[13px]"><span className="mt-0.5 w-4 h-4 rounded flex-shrink-0 flex items-center justify-center text-[9px] text-white font-bold" style={{ background: DANGER }}>P</span><span className="text-gray-700">インフルエンサー候補リスト提出</span><span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500 font-bold ml-auto">田中</span><span className="text-[10px] text-gray-400">月曜</span></div>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-gray-400 text-center mt-4 tracking-wider">貼るだけで、決定と宿題に自動分解</p>
+                  </div>
                 </ScrollReveal>
               </Section>
 
@@ -392,6 +379,22 @@ const App: React.FC = () => {
                       </ul>
                     </div>
                   </ScrollReveal>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto mt-10">
+                  <ScrollReveal delay={300}><ScreenShot src="/assets/puzzlework/04_cockpit.png" alt="経営サマリー" caption="導く人 — 経営サマリー" /></ScrollReveal>
+                  <ScrollReveal delay={350}><ScreenShot src="/assets/puzzlework/05_worker_dashboard.png" alt="ワーカー画面" caption="動く人 — ワーカー画面" /></ScrollReveal>
+                </div>
+              </Section>
+
+              {/* MORE SCREENS ─ スプリント・分析・マーケット・保管庫 */}
+              <Section id="screens" tint>
+                <ScrollReveal><Eyebrow>And more</Eyebrow><H>まだまだ、ある。</H></ScrollReveal>
+                <ScrollReveal delay={100}><Body>スプリント管理、プロジェクト横断の分析、外部ワーカーへの出品、完了した仕事の保管庫。<br />組織を動かすために必要な機能が、ひとつの場所に揃っています。</Body></ScrollReveal>
+                <div className="grid sm:grid-cols-2 gap-4 max-w-lg mx-auto mt-12">
+                  <ScrollReveal delay={150}><ScreenShot src="/assets/puzzlework/10_sprint.png" alt="スプリント" caption="スプリント管理" /></ScrollReveal>
+                  <ScrollReveal delay={200}><ScreenShot src="/assets/puzzlework/12_analytics.png" alt="分析" caption="プロジェクト分析" /></ScrollReveal>
+                  <ScrollReveal delay={250}><ScreenShot src="/assets/puzzlework/09_marketplace.png" alt="マーケットプレイス" caption="マーケットプレイス" /></ScrollReveal>
+                  <ScrollReveal delay={300}><ScreenShot src="/assets/puzzlework/11_archive.png" alt="保管庫" caption="保管庫" /></ScrollReveal>
                 </div>
               </Section>
 

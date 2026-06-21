@@ -26,6 +26,7 @@ const SECTION_BG: Record<string, BgItem> = {
   decide:   { /* img: '../../assets/pw_ledger.png',   */ grad: `linear-gradient(160deg, #221A12 0%, #120F0A 60%, #0B0A08 100%)` },
   ai:       { /* img: '../../assets/pw_import.png',   */ grad: `radial-gradient(120% 100% at 50% 100%, #2A2014 0%, #130F0A 60%, #0B0A08 100%)` },
   faces:    { /* img: '../../assets/pw_two.png',      */ grad: `linear-gradient(120deg, #1E1913 0%, #100E0A 55%, #0B0A08 100%)` },
+  screens:  { grad: `radial-gradient(110% 90% at 50% 60%, #201A14 0%, #110E0A 60%, #0B0A08 100%)` },
   start:    { /* img: '../../assets/pw_start.png',    */ grad: `radial-gradient(120% 110% at 50% 50%, #2C2114 0%, #130F0A 60%, #0B0A08 100%)` },
 };
 

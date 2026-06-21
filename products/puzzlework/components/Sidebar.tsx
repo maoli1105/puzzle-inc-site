@@ -12,6 +12,7 @@ const navItems = [
   { id: 'grow', label: 'Members' },
   { id: 'decide', label: 'Judgment' },
   { id: 'faces', label: 'Two Eyes' },
+  { id: 'screens', label: 'More' },
   { id: 'diagnose', label: 'AI診断' },
   { id: 'start', label: 'Start' },
 ];
