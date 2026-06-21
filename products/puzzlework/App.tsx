@@ -133,6 +133,8 @@ const Shot: React.FC<{ children: React.ReactNode; caption?: string }> = ({ child
 );
 const ScreenShot: React.FC<{ src: string; alt: string; caption?: string }> = ({ src, alt, caption }) => {
   const imgRef = React.useRef<HTMLImageElement>(null);
+  const base = import.meta.env.BASE_URL;
+  const resolved = src.startsWith('/') ? base + src.slice(1) : src;
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -143,7 +145,7 @@ const ScreenShot: React.FC<{ src: string; alt: string; caption?: string }> = ({ 
   return (
     <div className="max-w-md mx-auto mt-12">
       <div className="rounded-lg shadow-xl border border-white/10 overflow-hidden cursor-zoom-in" onMouseMove={onMove} onMouseLeave={onLeave}>
-        <img ref={imgRef} src={src} alt={alt} className="w-full h-auto block transition-transform duration-300 ease-out hover:scale-[2.2]" style={{ transformOrigin: '50% 50%' }} />
+        <img ref={imgRef} src={resolved} alt={alt} className="w-full h-auto block transition-transform duration-300 ease-out hover:scale-[2.2]" style={{ transformOrigin: '50% 50%' }} />
       </div>
       {caption && <p className="text-[11px] text-gray-400 text-center mt-3 tracking-wider">{caption}</p>}
     </div>
