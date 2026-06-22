@@ -19,6 +19,7 @@ export default defineConfig({
         terms: resolve(__dirname, 'terms/index.html'),
         contact: resolve(__dirname, 'contact/index.html'),
         news: resolve(__dirname, 'news/index.html'),
+        guide: resolve(__dirname, 'guide/index.html'),
       },
     },
   },
