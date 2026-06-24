@@ -3,6 +3,41 @@ import { H2, H3, P, Tip, Step, Def } from '../App';
 
 const Intro: React.FC = () => (
   <div>
+    {/* ===== 0. 学習ロードマップ ===== */}
+    <div className="mb-12 p-6 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200">
+      <h2 className="text-lg font-bold text-gray-900 mb-2">このガイドの歩き方</h2>
+      <p className="text-[13px] text-gray-500 mb-5">
+        Puzzle Work は機能が豊富ですが、全てを一度に覚える必要はありません。
+        3つのフェーズに分けて、段階的に使いこなしていくことを想定しています。
+      </p>
+      <div className="space-y-3">
+        <div className="flex items-start gap-3 p-3 rounded-xl bg-amber-50/80">
+          <span className="flex-shrink-0 w-7 h-7 rounded-full bg-amber-500 text-white text-[11px] font-bold flex items-center justify-center mt-0.5">1</span>
+          <div>
+            <p className="text-[13px] font-bold text-amber-800">まず動かす</p>
+            <p className="text-[12px] text-amber-700/70 mt-0.5">ピースを作り、接続し、完了する。自動ハンドオフの「おお、次が勝手に動いた」を体験するのがゴールです。</p>
+          </div>
+        </div>
+        <div className="flex items-start gap-3 p-3 rounded-xl bg-cyan-50/80">
+          <span className="flex-shrink-0 w-7 h-7 rounded-full bg-cyan-500 text-white text-[11px] font-bold flex items-center justify-center mt-0.5">2</span>
+          <div>
+            <p className="text-[13px] font-bold text-cyan-800">見渡す</p>
+            <p className="text-[12px] text-cyan-700/70 mt-0.5">ピースが回り始めたら、ガントチャート・負荷・スプリントで「全体像」を把握します。</p>
+          </div>
+        </div>
+        <div className="flex items-start gap-3 p-3 rounded-xl bg-emerald-50/80">
+          <span className="flex-shrink-0 w-7 h-7 rounded-full bg-emerald-500 text-white text-[11px] font-bold flex items-center justify-center mt-0.5">3</span>
+          <div>
+            <p className="text-[13px] font-bold text-emerald-800">組織に根づかせる</p>
+            <p className="text-[12px] text-emerald-700/70 mt-0.5">会議・決断台帳・OKR・外部人材連携など、自動化だけでは扱えない「例外」を補完する仕組みを導入します。</p>
+          </div>
+        </div>
+      </div>
+      <p className="text-[12px] text-gray-400 mt-4">
+        Phase 1 だけで日常業務は十分に回り始めます。焦らず順番に進めてください。
+      </p>
+    </div>
+
     {/* ===== 1. Puzzle Workとは ===== */}
     <H2>Puzzle Workとは</H2>
     <P>
@@ -19,8 +54,10 @@ const Intro: React.FC = () => (
       誰が何を待っているのかが常にマップ上で可視化される。仕事の流れ全体が「設計可能」になり、属人的な段取りから組織が解放される。
     </P>
     <Tip>
-      Puzzle Work は「管理するためのツール」ではなく「仕事を流すためのインフラ」です。
-      管理者は仕事の「流れ」を設計し、ワーカーは目の前の「着手可能なピース」に集中する。この役割分離が Puzzle Work の設計思想です。
+      Puzzle Work は「監視ツール」ではなく、ワーカーの自律性を守る「セーフティネット」です。
+      管理者は仕事の「流れ」を設計し、ワーカーは目の前の「着手可能なピース」に集中する。
+      誰かに見張られるのではなく、システムが「次やるべきこと」を自動で届けてくれる。
+      進捗の報告や確認の連絡が不要になることで、ワーカーは仕事そのものに100%集中できます。
     </Tip>
 
     {/* ===== 2. 基本概念の詳細説明 ===== */}

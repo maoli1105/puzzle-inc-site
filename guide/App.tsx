@@ -1,25 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import Intro from './sections/Intro';
-import MapGuide from './sections/MapGuide';
 import PieceGuide from './sections/PieceGuide';
+import MapGuide from './sections/MapGuide';
 import ScheduleGuide from './sections/ScheduleGuide';
-import MeetingGuide from './sections/MeetingGuide';
-import TeamGuide from './sections/TeamGuide';
 import AnalyticsGuide from './sections/AnalyticsGuide';
+import TeamGuide from './sections/TeamGuide';
+import MeetingGuide from './sections/MeetingGuide';
 import OperationsGuide from './sections/OperationsGuide';
 
 const AMBER = '#B46400';
 
-const categories = [
-  { id: 'intro', title: 'はじめに', icon: '01' },
-  { id: 'map', title: 'マップとフォルダ', icon: '02' },
-  { id: 'piece', title: 'ピースとフロー', icon: '03' },
-  { id: 'schedule', title: 'スケジュール', icon: '04' },
-  { id: 'meeting', title: '会議と判断', icon: '05' },
-  { id: 'team', title: 'チームと成長', icon: '06' },
-  { id: 'analytics', title: '分析と管理', icon: '07' },
-  { id: 'operations', title: '運用と自動化', icon: '08' },
+interface Phase {
+  label: string;
+  sub: string;
+  items: { id: string; title: string }[];
+}
+
+const phases: Phase[] = [
+  {
+    label: 'Phase 1',
+    sub: 'まず動かす',
+    items: [
+      { id: 'intro', title: 'はじめに' },
+      { id: 'piece', title: 'ピースとフロー' },
+      { id: 'map', title: 'マップとフォルダ' },
+    ],
+  },
+  {
+    label: 'Phase 2',
+    sub: '見渡す',
+    items: [
+      { id: 'schedule', title: 'スケジュール' },
+      { id: 'analytics', title: '分析と管理' },
+      { id: 'team', title: 'チームと成長' },
+    ],
+  },
+  {
+    label: 'Phase 3',
+    sub: '組織に根づかせる',
+    items: [
+      { id: 'meeting', title: '会議と判断' },
+      { id: 'operations', title: '運用と自動化' },
+    ],
+  },
 ];
+
+const allItems = phases.flatMap(p => p.items);
 
 export const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <h2 className="text-xl font-bold text-gray-900 mt-12 mb-4 pb-2 border-b border-gray-200">{children}</h2>
@@ -48,14 +74,19 @@ export const Def: React.FC<{ term: string; children: React.ReactNode }> = ({ ter
 
 const guideContent: Record<string, { title: string; component: React.FC }> = {
   intro: { title: 'はじめに', component: Intro },
-  map: { title: 'マップとフォルダ', component: MapGuide },
   piece: { title: 'ピースとフロー', component: PieceGuide },
+  map: { title: 'マップとフォルダ', component: MapGuide },
   schedule: { title: 'スケジュール', component: ScheduleGuide },
-  meeting: { title: '会議と判断', component: MeetingGuide },
-  team: { title: 'チームと成長', component: TeamGuide },
   analytics: { title: '分析と管理', component: AnalyticsGuide },
+  team: { title: 'チームと成長', component: TeamGuide },
+  meeting: { title: '会議と判断', component: MeetingGuide },
   operations: { title: '運用と自動化', component: OperationsGuide },
 };
+
+const PHASE_COLORS = ['#B46400', '#0891B2', '#059669'];
+const PHASE_BG = ['bg-amber-50', 'bg-cyan-50', 'bg-emerald-50'];
+const PHASE_TEXT = ['text-amber-700', 'text-cyan-700', 'text-emerald-700'];
+const PHASE_DOT = ['bg-amber-400', 'bg-cyan-400', 'bg-emerald-400'];
 
 const App: React.FC = () => {
   const [active, setActive] = useState('intro');
@@ -81,9 +112,10 @@ const App: React.FC = () => {
 
   const current = guideContent[active];
   const Content = current.component;
-  const currentIdx = categories.findIndex(c => c.id === active);
-  const prev = currentIdx > 0 ? categories[currentIdx - 1] : null;
-  const next = currentIdx < categories.length - 1 ? categories[currentIdx + 1] : null;
+  const currentIdx = allItems.findIndex(c => c.id === active);
+  const prev = currentIdx > 0 ? allItems[currentIdx - 1] : null;
+  const next = currentIdx < allItems.length - 1 ? allItems[currentIdx + 1] : null;
+  const currentPhaseIdx = phases.findIndex(p => p.items.some(i => i.id === active));
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -113,20 +145,31 @@ const App: React.FC = () => {
       <div className="max-w-6xl mx-auto flex">
         {/* Sidebar */}
         <aside className={`no-print w-64 flex-shrink-0 ${mobileMenu ? 'fixed inset-0 z-40 bg-white pt-14' : 'hidden md:block'}`}>
-          <nav className="sticky top-14 py-6 px-4 space-y-1 max-h-[calc(100vh-3.5rem)] overflow-y-auto">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => navigate(cat.id)}
-                className={`w-full text-left px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all flex items-center gap-3 ${
-                  active === cat.id
-                    ? 'bg-amber-50 text-amber-800 font-bold'
-                    : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'
-                }`}
-              >
-                <span className={`text-[10px] font-bold w-5 text-center ${active === cat.id ? 'text-amber-600' : 'text-gray-400'}`}>{cat.icon}</span>
-                {cat.title}
-              </button>
+          <nav className="sticky top-14 py-6 px-4 max-h-[calc(100vh-3.5rem)] overflow-y-auto">
+            {phases.map((phase, pi) => (
+              <div key={phase.label} className={pi > 0 ? 'mt-5' : ''}>
+                <div className={`flex items-center gap-2 px-3 py-2 rounded-lg mb-1 ${PHASE_BG[pi]}`}>
+                  <span className={`w-2 h-2 rounded-full ${PHASE_DOT[pi]}`} />
+                  <span className={`text-[10px] font-bold tracking-widest uppercase ${PHASE_TEXT[pi]}`}>{phase.label}</span>
+                  <span className={`text-[11px] font-medium ${PHASE_TEXT[pi]}`}>{phase.sub}</span>
+                </div>
+                <div className="space-y-0.5 ml-1">
+                  {phase.items.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => navigate(item.id)}
+                      className={`w-full text-left px-3 py-2 rounded-lg text-[13px] font-medium transition-all flex items-center gap-2 ${
+                        active === item.id
+                          ? 'bg-gray-100 text-gray-900 font-bold'
+                          : 'text-gray-500 hover:bg-gray-50 hover:text-gray-700'
+                      }`}
+                    >
+                      <span className={`w-1 h-1 rounded-full flex-shrink-0 ${active === item.id ? PHASE_DOT[pi] : 'bg-gray-300'}`} />
+                      {item.title}
+                    </button>
+                  ))}
+                </div>
+              </div>
             ))}
           </nav>
         </aside>
@@ -137,10 +180,15 @@ const App: React.FC = () => {
             <p className="text-[11px] text-gray-400 tracking-wider">Puzzle Work Guide</p>
           </div>
 
-          <div className="mb-2">
-            <span className="text-[11px] font-bold tracking-widest" style={{ color: AMBER }}>
-              {categories.find(c => c.id === active)?.icon}
+          {/* Phase badge */}
+          <div className="mb-3 flex items-center gap-2">
+            <span
+              className="text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded"
+              style={{ background: `${PHASE_COLORS[currentPhaseIdx]}15`, color: PHASE_COLORS[currentPhaseIdx] }}
+            >
+              {phases[currentPhaseIdx].label}
             </span>
+            <span className="text-[11px] text-gray-400">{phases[currentPhaseIdx].sub}</span>
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8">{current.title}</h1>
           <div className="max-w-2xl">
